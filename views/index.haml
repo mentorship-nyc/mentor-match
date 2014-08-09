@@ -18,16 +18,5 @@
       %h1
         Mentor Match
 
-      - if authenticated?
-        %h2
-          = @current_user.name
-
-        %ul
-          - @repositories.each do |repo|
-            %li= repo.name
-      - else
-        %p
-          %a{href: '/login'} Github
-
     %script{type: 'text/javascript', src: '/application.js'}
 
