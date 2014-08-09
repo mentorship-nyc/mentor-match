@@ -2,6 +2,7 @@
 *.rbc
 /.config
 /coverage/
+/log
 /spec/reports/
 /tmp/
 
