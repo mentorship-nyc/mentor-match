@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'active_record'
+require 'dotenv'
+require 'irb'
+
+Dotenv.load
+
+$:.unshift './lib'
+
+require 'initializers'
+require 'mentor_match/models'
+
+IRB.start
