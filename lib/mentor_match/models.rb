@@ -1,11 +1,29 @@
-$stdout.puts 'models:'
+require 'active_record'
+require 'uri'
 
-models = Dir["lib/mentor_match/models/*.rb"]
+db = URI.parse(ENV['DATABASE_URL'])
 
-if models.empty?
+ActiveRecord::Base.establish_connection(
+  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  :host     => db.host,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'utf8'
+)
+
+basename = File.basename(__FILE__, '.rb')
+
+$stdout.puts 'established activerecord connection'
+
+$stdout.puts "#{basename}:"
+
+files = Dir["lib/mentor_match/#{basename}/*.rb"]
+
+if files.empty?
   puts '- empty'
 else
-  models.sort.each do |file_path|
+  files.sort.each do |file_path|
     require "./#{file_path}"
     $stdout.puts "- loaded #{file_path}"
   end

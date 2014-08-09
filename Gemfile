@@ -9,7 +9,7 @@ end
 
 gem 'activerecord'
 gem 'haml'
-#gem 'octokit', '~> 3.0'
+gem 'octokit', '~> 3.0'
 gem 'pg'
 gem 'puma'
 gem 'rack-protection'

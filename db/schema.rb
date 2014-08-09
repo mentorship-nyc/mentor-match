@@ -17,14 +17,18 @@ ActiveRecord::Schema.define(version: 20140809042448) do
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
-    t.string "username", limit: 50,  null: false
-    t.string "avatar",               null: false
-    t.string "name"
-    t.string "email"
-    t.string "company",  limit: 100
-    t.string "location", limit: 100
+    t.integer "github_id",             null: false
+    t.string  "username",  limit: 50,  null: false
+    t.string  "avatar",                null: false
+    t.boolean "hireable",              null: false
+    t.string  "name"
+    t.string  "email"
+    t.string  "company",   limit: 100
+    t.string  "location",  limit: 100
+    t.string  "token",     limit: 100
   end
 
+  add_index "users", ["github_id"], name: "index_users_on_github_id", using: :btree
   add_index "users", ["location"], name: "index_users_on_location", using: :btree
 
 end
