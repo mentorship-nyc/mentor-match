@@ -11,6 +11,7 @@ GEM
     haml (4.0.5)
       tilt
     method_source (0.8.2)
+    newrelic_rpm (3.9.0.229)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -36,6 +37,7 @@ DEPENDENCIES
   dotenv
   foreman
   haml
+  newrelic_rpm
   pry
   puma
   rack-protection

@@ -8,6 +8,7 @@ group :development do
 end
 
 gem 'haml'
+gem 'newrelic_rpm'
 gem 'puma'
 gem 'rack-protection'
 gem 'rack-timeout'
