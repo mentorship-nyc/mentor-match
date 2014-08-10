@@ -15,6 +15,10 @@ module MentorMatch
       enable :logging
     end
 
+    configure :production do
+      require 'newrelic_rpm'
+    end
+
     get '/' do
       haml :index
     end
