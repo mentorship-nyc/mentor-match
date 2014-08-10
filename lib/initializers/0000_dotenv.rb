@@ -1,3 +1,5 @@
-require 'dotenv'
+unless ENV['RACK_ENV'] == 'production'
+  require 'dotenv'
 
-Dotenv.load
+  Dotenv.load
+end
