@@ -1,7 +1,3 @@
-require 'dotenv'
-
-Dotenv.load
-
 $:.unshift './lib'
 
 require 'file_loader'
