@@ -41,7 +41,7 @@
     .container
       .row
         .col-xs-hidden.col-sm-2
-        .signup.col-xs-12.col-sm-8{style: 'display: none;'}
+        .signup.col-xs-12.col-sm-8.bg-warning{style: 'display: none;'}
           %form{action: '/signup', role: :form, method: :post}
             %input{type: :hidden, name: :csrf, value: @csrf}
 
