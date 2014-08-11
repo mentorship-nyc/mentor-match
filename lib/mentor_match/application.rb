@@ -1,5 +1,7 @@
 require 'haml'
+require 'securerandom'
 require 'sinatra'
+require 'mentor_match/user_mailer'
 require 'mentor_match/concerns'
 
 module MentorMatch
@@ -11,6 +13,7 @@ module MentorMatch
 
     configure do
       set :haml, format: :html5
+      enable :sessions
       enable :show_exceptions
       enable :logging
     end
@@ -20,7 +23,21 @@ module MentorMatch
     end
 
     get '/' do
+      @csrf = session[:csrf] = SecureRandom.base64(32)
       haml :index
+    end
+
+    post '/signup' do
+      if session[:csrf] == params[:csrf]
+        UserMailer.signup({
+          to: "#{params[:name]} <#{params[:email]}>",
+          subject: 'Mentoring NYC Signup',
+          html_body: erb(:mentoring_nyc_signup)
+        })
+        redirect to('/')
+      else
+        status 400
+      end
     end
 
     get '/*' do

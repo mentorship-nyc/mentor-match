@@ -10,8 +10,13 @@ GEM
       thor (~> 0.19.1)
     haml (4.0.5)
       tilt
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
+    mime-types (2.3)
     newrelic_rpm (3.9.0.229)
+    pony (1.10)
+      mail (>= 2.0)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -38,6 +43,7 @@ DEPENDENCIES
   foreman
   haml
   newrelic_rpm
+  pony
   pry
   puma
   rack-protection
