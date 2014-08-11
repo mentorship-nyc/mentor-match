@@ -10,7 +10,7 @@
 
     %link{href: '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel: :stylesheet, media: :all}
     %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel: :stylesheet, media: :all}
-    %link{href: 'http://fonts.googleapis.com/css?family=Merriweather:300,400italic|Droid+Serif:400italic|Crete+Round:400', rel: :stylesheet, media: 'all'}
+    %link{href: 'http://fonts.googleapis.com/css?family=Merriweather:300,300italic,400italic|Droid+Serif:400italic|Crete+Round:400', rel: :stylesheet, media: 'all'}
     %link{href: '/css/application.css', rel: :stylesheet, media: 'all'}
 
   %body
@@ -41,7 +41,7 @@
       .row
         .content.col-xs-12.text-center
           %h2
-            Meet mentors in the community.
+            Meet mentors in the community, or become one!
 
           .row
             .col-sm-2.hidden-xs
@@ -49,8 +49,9 @@
               %p
                 The opportunities today are endless in our city.  Technology use is creating
                 more options than many other fields and continues to increase year after year.
-                Our goal is to nuture growth and skill in people who want to improve.  We believe
-                by building a community of mentorship, this is only a conversation away.
+                Our goal is to encourage and support individuals who want to manage their own
+                learning.  We believe by building a community of mentorship, this is only a
+                conversation away.
             .col-sm-2.hidden-xs
 
           %h2
@@ -70,18 +71,46 @@
 
           .row
             .col-xs-12.col-sm-6
+              %img{src: '/images/student.jpg'}
+
               %h3
                 As a Student
 
-              %p
-                You will be paired with a mentor who has knowledge in technology.
+              .row
+                .col-xs-12
+                  %ul
+                    %li
+                      Learn specific skills
+                    %li
+                      Gain industry perspective
+                    %li
+                      Have a sounding board
 
             .col-xs-12.col-sm-6
+              %img{src: '/images/mentor.jpg'}
+
               %h3
                 As a Mentor
 
-              %p
-                You will be paired with a student who is curious to learn.
+              .row
+                .col-xs-12
+                  %ul
+                    %li
+                      Build leadership skills
+                    %li
+                      Confirmation of skills
+                    %li
+                      Be part of a cause
+
+          .row
+            .col-sm-1.hidden-xs
+            .col-xs-12.col-sm-10
+              %p.summary
+                The journey of a mentor and student is mutually beneficial. It is about
+                sharing, humility, and openness to new thought. Both people gain insight
+                on how to better approach a challenge.
+            .col-sm-1.hidden-xs
+
 
     %script{type: 'text/javascript', src: '/js/application.js'}
     - if ENV['RACK_ENV'] == 'production'
