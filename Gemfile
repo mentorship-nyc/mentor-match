@@ -7,6 +7,7 @@ group :development do
   gem 'pry'
 end
 
+gem 'faraday'
 gem 'haml'
 gem 'newrelic_rpm'
 gem 'pony'
