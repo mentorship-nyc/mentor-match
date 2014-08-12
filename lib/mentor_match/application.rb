@@ -1,3 +1,4 @@
+require 'base64'
 require 'haml'
 require 'securerandom'
 require 'sinatra'
@@ -32,6 +33,9 @@ module MentorMatch
         UserMailer.signup({
           to: "#{params[:name]} <#{params[:email]}>",
           subject: 'Mentoring NYC Signup',
+          attachments: {
+            "mentor-stormtrooper.jpg" => File.read(File.join(settings.root, 'public/images/emails/mentor-stormtrooper.jpg'))
+          },
           html_body: erb(:mentoring_nyc_signup)
         })
         redirect to('/')
