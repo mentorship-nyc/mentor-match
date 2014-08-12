@@ -33,15 +33,18 @@ module MentorMatch
 
     post '/messaging/email/slack' do
       events = JSON.parse params['mandrill_events']
-      events.each do |event|
-        if event['event'] == 'inbound'
-          message = event['msg']
 
-          text = <<-TEXT
-            *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
-          TEXT
+      if events
+        events.each do |event|
+          if event['event'] == 'inbound'
+            message = event['msg']
 
-          Slack.message('#invites', 'slackbox', text)
+            text = <<-TEXT
+              *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
+            TEXT
+
+            Slack.message('#invites', 'slackbox', text)
+          end
         end
       end
     end
