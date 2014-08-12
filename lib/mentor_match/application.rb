@@ -38,7 +38,7 @@ module MentorMatch
           message = event['msg']
 
           text = <<-TEXT
-            #{message['from_email']}\n#{message['subject']}\n\n#{message['text']}
+            *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
           TEXT
 
           Slack.message('#invites', 'slackbox', text)
