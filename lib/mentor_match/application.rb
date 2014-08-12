@@ -1,5 +1,3 @@
-require 'awesome_print'
-require 'base64'
 require 'haml'
 require 'json'
 require 'securerandom'
@@ -32,20 +30,17 @@ module MentorMatch
     end
 
     post '/messaging/email/slack' do
-      events = JSON.parse params['mandrill_events']
+      events = JSON.parse(params['mandrill_events'])
+      event = events[0]
 
-      if events
-        events.each do |event|
-          if event['event'] == 'inbound'
-            message = event['msg']
+      if event && event['event'] == 'inbound'
+        message = event['msg']
 
-            text = <<-TEXT
-              *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
-            TEXT
+        text = <<-TEXT
+          *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
+        TEXT
 
-            Slack.message('#invites', 'slackbox', text)
-          end
-        end
+        Slack.message('#invites', 'slackbox', text)
       end
     end
 
