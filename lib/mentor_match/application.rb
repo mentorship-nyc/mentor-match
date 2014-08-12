@@ -35,7 +35,7 @@ module MentorMatch
     post '/signup' do
       when_successful_post do
         UserMailer.signup(params[:name], params[:email], params[:role])
-        Slack.signup(params[:name], params[:email], params[:role]
+        Slack.signup(params[:name], params[:email], params[:role])
 
         redirect to('/')
       end
