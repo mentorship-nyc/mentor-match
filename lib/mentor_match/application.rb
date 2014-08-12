@@ -1,3 +1,4 @@
+require 'awesome_print'
 require 'base64'
 require 'haml'
 require 'json'
