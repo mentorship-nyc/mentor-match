@@ -37,7 +37,7 @@ module MentorMatch
         if event['event'] == 'inbound'
           message = event['msg']
 
-          text <<-TEXT
+          text = <<-TEXT
             #{message['from_email']}\n#{message['subject']}\n\n#{message['text']}
           TEXT
 

@@ -7,7 +7,7 @@ module MentorMatch
     def self.signup(name, email, role, options = {})
       channel = options[:channel] || '#mentorship'
       username = options[:username] || 'slackbot'
-      text <<-TEXT
+      text = <<-TEXT
         *Heads up everyone!* #{name} -> #{email} just signed up on www.mentoring-nyc.com to be a #{role}.
         If anyone is a available and wants to collaborate, send him/her an email.
       TEXT
