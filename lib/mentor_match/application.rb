@@ -29,7 +29,7 @@ module MentorMatch
       haml :index
     end
 
-    post '/messaging/email/info' do
+    post '/messaging/email/team' do
       events = JSON.parse(params['mandrill_events'])
       event = events[0]
 
