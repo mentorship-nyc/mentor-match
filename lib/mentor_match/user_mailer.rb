@@ -16,14 +16,14 @@ module MentorMatch
           Your signup, to be a mentor, was received and we are seeking a student
           for you. &nbsp;If you have any questions in the meantime, feel free
           to contact us at
-          <a href="mailto:info@mentoring-nyc.com">info@mentoring-nyc.com</a>.
+          <a href="mailto:team@mentoring-nyc.com">team@mentoring-nyc.com</a>.
         EOF
       else
         message = <<-EOF
           Your signup, to be a student, was received and we are seeking a mentor
           for you. &nbsp;If you have any questions in the meantime, feel free
           to contact us at
-          <a href="mailto:info@mentoring-nyc.com">info@mentoring-nyc.com</a>.
+          <a href="mailto:team@mentoring-nyc.com">team@mentoring-nyc.com</a>.
         EOF
       end
 
