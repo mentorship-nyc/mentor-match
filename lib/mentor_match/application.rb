@@ -3,6 +3,7 @@ require 'haml'
 require 'securerandom'
 require 'sinatra'
 require 'mentor_match/user_mailer'
+require 'mentor_match/slack'
 require 'mentor_match/concerns'
 
 module MentorMatch
