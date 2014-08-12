@@ -4,7 +4,7 @@ module MentorMatch
   class Slack
     SLACK_HTTPS_URL = 'https://slack.com'
 
-    def self.user_signup(name, email, role, options = {})
+    def self.signup(name, email, role, options = {})
       connection.post '/api/chat.postMessage', {
         token: ENV['SLACK_TOKEN'],
         channel: options[:channel] || '#mentorship',
