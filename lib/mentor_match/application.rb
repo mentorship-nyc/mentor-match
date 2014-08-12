@@ -1,5 +1,6 @@
 require 'base64'
 require 'haml'
+require 'json'
 require 'securerandom'
 require 'sinatra'
 require 'mentor_match/user_mailer'
@@ -30,7 +31,8 @@ module MentorMatch
     end
 
     post '/messaging/email/slack' do
-      puts params
+      json = JSON.parse params['mandrill_events']
+      ap json
     end
 
     post '/signup' do
