@@ -29,6 +29,22 @@ module MentorMatch
       haml :index
     end
 
+    post '/messaging/email/info' do
+      events = JSON.parse(params['mandrill_events'])
+      event = events[0]
+
+      if event && event['event'] == 'inbound'
+        message = event['msg']
+
+        Pony.mail({
+          to: 'chad.pry@gmail.com',
+          from: "#{message['from_name']} <#{message['from_email']}>",
+          subject: "FWD: #{message['subject']}",
+          html_body: message['html']
+        })
+      end
+    end
+
     post '/messaging/email/slack' do
       events = JSON.parse(params['mandrill_events'])
       event = events[0]
