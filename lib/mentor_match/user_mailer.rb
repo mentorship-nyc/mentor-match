@@ -38,7 +38,6 @@ module MentorMatch
 
       Pony.mail({
         to: "#{name} <#{email}>",
-        bcc: 'chad.pry@gmail.com',
         subject: "Mentoring NYC #{role.capitalize} Signup",
         attachments: {
           "mentor-stormtrooper.jpg" => File.read(File.join(BASE_PATH, 'public/images/emails/mentor-stormtrooper.jpg'))
