@@ -29,7 +29,7 @@ module MentorMatch
       haml :index
     end
 
-    post '/incoming-info' do
+    post '/messaging/email/slack' do
       puts params
     end
 

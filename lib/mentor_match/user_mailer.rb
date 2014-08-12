@@ -28,7 +28,7 @@ module MentorMatch
       end
 
       message += <<-EOF
-        <br>
+        <br><br>
         Would you like to join our slack team?  Benefits include meeting more of the
         community and being able to ask questions in realtime chat.  If so, send an
         email to
