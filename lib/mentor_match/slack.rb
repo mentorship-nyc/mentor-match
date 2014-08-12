@@ -10,8 +10,8 @@ module MentorMatch
         channel: options[:channel] || '#mentorship',
         username: options[:username] || 'slackbot',
         text: <<-TEXT
-          *Heads up everyone!* #{name} -> #{email} is looking to be a #{role}.
-          If anyone is a #{opposite(role)} and wants to work together, send him/her an email.
+          *Heads up everyone!* #{name} -> #{email} just signed up on www.mentoring-nyc.com to be a #{role}.
+          If anyone is a available and wants to collaborate, send him/her an email.
         TEXT
       }
     end
