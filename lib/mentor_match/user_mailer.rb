@@ -27,6 +27,15 @@ module MentorMatch
         EOF
       end
 
+      message += <<-EOF
+        <br>
+        Would you like to join our slack team?  Benefits include meeting more of the
+        community and being able to ask questions in realtime chat.  If so, send an
+        email to
+        <a href="mailto:slack@mentoring-nyc.com">slack@mentoring-nyc.com</a> and
+        we will set you up!
+      EOF
+
       Pony.mail({
         to: "#{name} <#{email}>",
         bcc: 'chad.pry@gmail.com',
