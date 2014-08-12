@@ -28,19 +28,16 @@ module MentorMatch
       haml :index
     end
 
+    post '/incoming-info' do
+      puts params
+    end
+
     post '/signup' do
-      if session[:csrf] == params[:csrf]
-        UserMailer.signup({
-          to: "#{params[:name]} <#{params[:email]}>",
-          subject: 'Mentoring NYC Signup',
-          attachments: {
-            "mentor-stormtrooper.jpg" => File.read(File.join(settings.root, 'public/images/emails/mentor-stormtrooper.jpg'))
-          },
-          html_body: erb(:mentoring_nyc_signup)
-        })
+      when_successful_post do
+        UserMailer.signup(params[:name], params[:email], params[:role])
+        Slack.signup(params[:name], params[:email], params[:role]
+
         redirect to('/')
-      else
-        status 400
       end
     end
 
@@ -55,6 +52,14 @@ module MentorMatch
         File.read(full_path)
       else
         status 404
+      end
+    end
+
+    def when_successful_post
+      if session[:csrf] == params[:csrf]
+        yield
+      else
+        status 400
       end
     end
   end
