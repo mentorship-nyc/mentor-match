@@ -9,6 +9,7 @@ header > .row > div {
   background-size: cover;
   border-bottom: 1px solid #999;
   color: #fff;
+  z-index: 10;
 }
 
 .header h1 {
@@ -20,12 +21,21 @@ header > .row > div {
   text-transform: uppercase;
 }
 
+#slidebox {
+  margin-top: -266px;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
 .signup {
   -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.55);
   -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.55);
-  border-bottom: 1px solid #aaa;
-  border-left: 1px solid #aaa;
-  border-right: 1px solid #aaa;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-radius: 4px;
   box-shadow: 3px 2px 2px 0px rgba(0,0,0,0.55);
 }
 

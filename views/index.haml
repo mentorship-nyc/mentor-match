@@ -38,10 +38,10 @@
                   %button.btn.btn-warning.btn-signup
                     Signup
 
-    .container
-      .row
+    .container{style: 'position: relative'}
+      .row#slidebox{style: 'display: none;'}
         .col-xs-hidden.col-sm-2
-        .signup.col-xs-12.col-sm-8.bg-warning{style: 'display: none;'}
+        .signup.col-xs-12.col-sm-8
           %form{action: '/signup', role: :form, method: :post}
             %input{type: :hidden, name: :csrf, value: @csrf}
 
@@ -86,7 +86,7 @@
             .col-sm-2.hidden-xs
 
           %h2
-            What you can expect
+            What to expect
 
           .row
             .col-xs-12
