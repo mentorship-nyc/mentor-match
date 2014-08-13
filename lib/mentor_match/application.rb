@@ -16,8 +16,11 @@ module MentorMatch
     configure do
       set :haml, format: :html5
       enable :sessions
-      enable :show_exceptions
       enable :logging
+    end
+
+    configure :development do
+      enable :show_exceptions
     end
 
     configure :production do
