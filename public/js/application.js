@@ -12,6 +12,7 @@
       'margin-top': margin
     }, function() {
       $('input#name').focus();
+      $('body').animate({scrollTop: $slidebox.offset().top});
     });
   });
 
