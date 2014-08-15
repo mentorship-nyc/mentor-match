@@ -1,3 +1,16 @@
+var editor = ace.edit('editor');
+editor.setTheme('ace/theme/xcode');
+editor.getSession().setTabSize(2);
+//editor.setKeyboardHandler('ace/keyboard/vim');
+editor.getSession().setMode('ace/mode/ruby');
+editor.focus();
+
+$('ul.dropdown-menu li a').each(function(index, li) {
+  $(li).click(function() {
+    editor.getSession().setMode($(li).data('language'));
+  });
+});
+
 (function() {
   $('.btn-signup').click(function() {
     $slidebox = $('#slidebox');

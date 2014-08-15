@@ -15,15 +15,18 @@
 
   %body
     .container-fluid
-
-    .container-fluid
-      %header
+      .hero
         .row
           .col-xs-12
-            .row
-              .header.col-xs-10
+            .row.header
+              .header.col-xs-6
                 %h1
                   Mentoring NYC
+              -#.links.col-xs-6.text-right{style: 'position: fixed'}
+                %a{href: ''}
+                  %i.fa.fa-trophy
+                  Challenges
+
             .row
               .mission.col-xs-12.text-center
                 .row
@@ -146,6 +149,7 @@
 
 
     %script{type: 'text/javascript', src: '//code.jquery.com/jquery-1.11.0.min.js'}
+    %script{type: 'text/javascript', src: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js'}
     %script{type: 'text/javascript', src: '/js/application.js'}
     - if ENV['RACK_ENV'] == 'production'
       :javascript

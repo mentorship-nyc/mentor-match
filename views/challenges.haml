@@ -1,0 +1,34 @@
+.row
+  .col-xs-12
+    %h3
+      = "Service Lane"
+
+.row
+  .col-xs-12.problem-layout
+    .row
+      .col-xs-12.problem
+        Calvin is driving his favorite vehicle on the 101 freeway. He notices that the check engine light of his vehicle is on, and he wants to service it immediately to avoid any risks. Luckily, a service lane runs parallel to the highway. The length of the highway and the service lane is N units. The service lane consists of N segments of unit length, where each segment can have different widths.
+
+        Calvin can enter into and exit from any segment. Let's call the entry segment as index i and the exit segment as index j. Assume that the exit segment lies after the entry segment(j>i) and i ≥ 0. Calvin has to pass through all segments from index i to indexj (both inclusive).
+
+    .row
+      .col-xs-12.edit-area
+        .row
+          .col-xs-12
+            .dropdown
+              %a#iLabel{'role' => :button, 'data-toggle' => :dropdown, 'data-target' => '#', 'href' => ''}
+                Language
+                %span.caret
+
+              %ul.dropdown-menu{'role' => :menu, 'aria-labelledby' => 'dLabel'}
+                %li
+                  %a{'data-target' => '#', 'data-language' => 'ace/mode/ruby'} Ruby
+
+                %li
+                  %a{'data-target' => '#', 'data-language' => 'ace/mode/javascript'} JavaScript
+
+        .row
+          .col-xs-12
+            #editor<
+              class Person
+
