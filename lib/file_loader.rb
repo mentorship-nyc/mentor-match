@@ -1,7 +1,7 @@
 module FileLoader
   def self.path(load_path)
     basename = File.basename(load_path, '.rb')
-    $stdout.puts "#{basename}:"
+    $stdout.puts "#{basename}:" if ENV['DEBUG']
 
     files = Dir["#{File.dirname(load_path)}/#{basename}/*.rb"]
 
@@ -14,6 +14,6 @@ module FileLoader
 
   def self.load(path)
     require path
-    $stdout.puts "- loaded #{File.basename(path)}"
+    $stdout.puts "- loaded #{File.basename(path)}" if ENV['DEBUG']
   end
 end

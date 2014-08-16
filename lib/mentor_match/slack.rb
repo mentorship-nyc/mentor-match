@@ -1,4 +1,4 @@
-require 'faraday'
+require 'faraday_middleware'
 
 module MentorMatch
   class Slack
@@ -26,6 +26,7 @@ module MentorMatch
       @connection = Faraday.new(url: SLACK_HTTPS_URL) do |faraday|
         faraday.request  :url_encoded
         faraday.response :logger
+        faraday.response :json, :content_type => /\bjson$/
         faraday.adapter  Faraday.default_adapter
       end
     end

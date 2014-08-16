@@ -8,11 +8,16 @@ group :development do
   gem 'pry'
 end
 
+gem 'activerecord'
 gem 'faraday'
+gem 'faraday_middleware'
 gem 'haml'
 gem 'newrelic_rpm'
+gem 'octokit'
+gem 'pg'
 gem 'pony'
 gem 'puma'
 gem 'rack-protection'
 gem 'rack-timeout'
 gem 'sinatra'
+gem 'sinatra-activerecord'

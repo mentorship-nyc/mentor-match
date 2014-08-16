@@ -1,6 +1,7 @@
 $:.unshift './lib'
 
 require 'file_loader'
+require 'mentor_match/models'
 require 'mentor_match/application'
 require 'initializers'
 
