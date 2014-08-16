@@ -11,7 +11,6 @@ module MentorMatch
 
     set :root,  "#{File.dirname(__FILE__)}/../../"
     set :views, Proc.new { File.join(root, 'views') }
-    set :environment, (ENV['RACK_ENV'] || :development).to_sym
 
     include HealthCheck
     include EmailMessaging
@@ -22,7 +21,6 @@ module MentorMatch
       set :haml, format: :html5
       enable :sessions
       enable :logging
-      set :database, ENV['DATABASE_URL']
     end
 
     configure :development do
