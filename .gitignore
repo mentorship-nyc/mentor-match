@@ -3,6 +3,7 @@
 *.rbc
 .sass-cache
 /.config
+config/database.yml
 /coverage/
 /log/
 /spec/reports/
