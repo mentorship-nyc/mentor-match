@@ -8,6 +8,6 @@ require 'initializers/0000_dotenv'
 require 'file_loader'
 require 'active_record'
 require 'sinatra/activerecord'
-require 'mentor_match/models'
+require 'mentor_match'
 
 IRB.start
