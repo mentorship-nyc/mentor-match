@@ -3,6 +3,7 @@ require 'octokit'
 
 module MentorMatch
   module OAuthProviders
+    CONTENT_TYPE          = 'application/json'
     GITHUB_URL            = 'https://github.com'
     GITHUB_OAUTH_CALLBACK = "#{ENV['DOMAIN']}/auth/github/callback"
     GITHUB_AUTHORIZE_URL  = "#{GITHUB_URL}/login/oauth/authorize"
@@ -15,6 +16,7 @@ module MentorMatch
 
     def self.included(base)
       base.get '/auth/github' do
+        session['auth.redirect_uri'] = params[:redirect_uri] || '/'
         segments = {}
         segments['client_id'] = ENV['GITHUB_KEY']
         segments['redirect_uri'] = GITHUB_OAUTH_CALLBACK
@@ -29,14 +31,13 @@ module MentorMatch
         if params[:state].gsub(' ', '+') == session['auth.state']
           response = connection(GITHUB_URL).get do |request|
             request.url GITHUB_TOKEN_URL
-            request.headers['Accept']       = 'application/json'
+            request.headers['Accept']       = CONTENT_TYPE
             request.params['client_id']     = ENV['GITHUB_KEY']
             request.params['client_secret'] = ENV['GITHUB_SECRET']
             request.params['code']          = params[:code]
             request.params['redirect_uri']  = GITHUB_OAUTH_CALLBACK
           end
 
-          session['auth.github.token'] = response.body['access_token']
           client = Octokit::Client.new(access_token: response.body['access_token'])
 
           user = User.find_with_oauth({
@@ -53,6 +54,7 @@ module MentorMatch
           }, current_user)
 
           session['auth.entity_id'] = user.id
+          redirect to(session['auth.redirect_uri'])
         else
           halt 403, 'state not authentic'
         end
@@ -88,7 +90,7 @@ module MentorMatch
     end
 
     def current_user
-      session['auth.entity_id'] && User.where(session['auth.entity_id']).first
+      session['auth.entity_id'] && User.where(id: session['auth.entity_id']).first
     end
 
     def connection(url)

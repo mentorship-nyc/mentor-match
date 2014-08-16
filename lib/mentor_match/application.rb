@@ -16,6 +16,18 @@ module MentorMatch
     include EmailMessaging
     include Csrf
     include OAuthProviders
+    include Profile
+    include Challenges
+
+    helpers do
+      def authenticated?
+        !!session['auth.entity_id']
+      end
+
+      def current_user
+        @current_user ||= User.where(id: session['auth.entity_id']).first
+      end
+    end
 
     configure do
       set :haml, format: :html5
@@ -32,7 +44,7 @@ module MentorMatch
     end
 
     get '/' do
-      haml :index
+      haml :index, layout: DEFAULT_LAYOUT
     end
 
     post '/signup' do
@@ -40,6 +52,11 @@ module MentorMatch
       Slack.signup(params[:name], params[:email], params[:role])
 
       redirect to('/')
+    end
+
+    get '/signout' do
+      session.clear
+      redirect to(back)
     end
 
     get '/*' do

@@ -1,162 +1,124 @@
-!!! 5
-%html{lang: :en}
-  %head
-    %meta{charset: 'utf-8'}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
-    %meta{name: 'apple-mobile-web-app-capable', content: 'yes'}
-
-    %title
-      Mentoring NYC
-
-    %link{href: '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel: :stylesheet, media: :all}
-    %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel: :stylesheet, media: :all}
-    %link{href: 'http://fonts.googleapis.com/css?family=Montserrat:400,700|Merriweather:300,300italic,400italic|Droid+Serif:400italic|Crete+Round:400', rel: :stylesheet, media: 'all'}
-    %link{href: '/css/application.css', rel: :stylesheet, media: 'all'}
-
-  %body
-    .container-fluid
-      .hero
+.container-fluid
+  .hero
+    .row
+      .col-xs-12
         .row
-          .col-xs-12
-            .row.header
-              .header.col-xs-6
-                %h1
-                  Mentoring NYC
-              -#.links.col-xs-6.text-right{style: 'position: fixed'}
-                %a{href: ''}
-                  %i.fa.fa-trophy
-                  Challenges
+          .mission.col-xs-12.text-center
+            .row
+              .col-xs-12
+                .subtitle
+                  Sharing
 
             .row
-              .mission.col-xs-12.text-center
-                .row
-                  .col-xs-12
-                    .subtitle
-                      Sharing
+              .col-xs-12
+                .title
+                  Experience &amp; Craft
 
-                .row
-                  .col-xs-12
-                    .title
-                      Experience &amp; Craft
+            .action
+              %button.btn.btn-warning.btn-signup
+                Signup
 
-                .action
-                  %button.btn.btn-warning.btn-signup
-                    Signup
+.container{style: 'position: relative'}
+  .row#slidebox{style: 'display: none;'}
+    .col-xs-hidden.col-sm-2
+    .signup.col-xs-12.col-sm-8
+      %form{action: '/signup', role: :form, method: :post}
+        %input{type: :hidden, name: :csrf, value: @csrf}
 
-    .container{style: 'position: relative'}
-      .row#slidebox{style: 'display: none;'}
-        .col-xs-hidden.col-sm-2
-        .signup.col-xs-12.col-sm-8
-          %form{action: '/signup', role: :form, method: :post}
-            %input{type: :hidden, name: :csrf, value: @csrf}
+        .form-group
+          %label{for: :name} Name
+          %input.form-control{type: :text, name: :name, id: :name, placeholder: 'Enter name'}
 
-            .form-group
-              %label{for: :name} Name
-              %input.form-control{type: :text, name: :name, id: :name, placeholder: 'Enter name'}
+        .form-group
+          %label{for: :email} Email Address
+          %input.form-control{type: :email, name: :email, placeholder: 'Enter email'}
 
-            .form-group
-              %label{for: :email} Email Address
-              %input.form-control{type: :email, name: :email, placeholder: 'Enter email'}
+        .form-group
+          .row
+            .col-xs-6
+              %label
+                %input{type: :radio, name: :role, value: 'student'}
+                Student
 
-            .form-group
-              .row
-                .col-xs-6
-                  %label
-                    %input{type: :radio, name: :role, value: 'student'}
-                    Student
+            .col-xs-6
+              %label
+                %input{type: :radio, name: :role, value: 'mentor'}
+                Mentor
 
-                .col-xs-6
-                  %label
-                    %input{type: :radio, name: :role, value: 'mentor'}
-                    Mentor
+        .actions.text-right
+          %button.btn.btn-primary{type: :submit} Submit
+    .col-xs-hidden.col-sm-2
 
-            .actions.text-right
-              %button.btn.btn-primary{type: :submit} Submit
-        .col-xs-hidden.col-sm-2
+  .row
+    .content.col-xs-12.text-center
+      %h2
+        Meet mentors in the community, or become one!
 
       .row
-        .content.col-xs-12.text-center
-          %h2
-            Meet mentors in the community, or become one!
+        .col-sm-2.hidden-xs
+        .col-xs-12.col-sm-8
+          %p
+            The opportunities today are endless in our city.  Technology use is creating
+            more options than many other fields and continues to increase year after year.
+            Our goal is to encourage and support individuals who want to manage their own
+            learning.  We believe by building a community of mentorship, this is only a
+            conversation away.
+        .col-sm-2.hidden-xs
 
-          .row
-            .col-sm-2.hidden-xs
-            .col-xs-12.col-sm-8
-              %p
-                The opportunities today are endless in our city.  Technology use is creating
-                more options than many other fields and continues to increase year after year.
-                Our goal is to encourage and support individuals who want to manage their own
-                learning.  We believe by building a community of mentorship, this is only a
-                conversation away.
-            .col-sm-2.hidden-xs
+      %h2
+        What to expect
 
-          %h2
-            What to expect
+      .row
+        .col-xs-12
+          %ul
+            %li
+              Collaboration on projects
+            %li
+              Introduction to people/communities
+            %li
+              Demonstration of new concepts
+            %li
+              Pair programming
+
+      .row
+        .col-xs-12.col-sm-6
+          %img{src: '/images/student.jpg'}
+
+          %h3
+            As a Student
 
           .row
             .col-xs-12
               %ul
                 %li
-                  Collaboration on projects
+                  Learn specific skills
                 %li
-                  Introduction to people/communities
+                  Gain industry perspective
                 %li
-                  Demonstration of new concepts
-                %li
-                  Pair programming
+                  Have a sounding board
+
+        .col-xs-12.col-sm-6
+          %img{src: '/images/mentor.jpg'}
+
+          %h3
+            As a Mentor
 
           .row
-            .col-xs-12.col-sm-6
-              %img{src: '/images/student.jpg'}
+            .col-xs-12
+              %ul
+                %li
+                  Build leadership skills
+                %li
+                  Confirmation of skills
+                %li
+                  Be part of a cause
 
-              %h3
-                As a Student
+      .row
+        .col-sm-2.hidden-xs
+        .col-xs-12.col-sm-8
+          %p.summary
+            The journey of a mentor and student is mutually beneficial. It is about
+            sharing, humility, and openness to new thought. Both people gain insight
+            on how to better approach a challenge.
+        .col-sm-2.hidden-xs
 
-              .row
-                .col-xs-12
-                  %ul
-                    %li
-                      Learn specific skills
-                    %li
-                      Gain industry perspective
-                    %li
-                      Have a sounding board
-
-            .col-xs-12.col-sm-6
-              %img{src: '/images/mentor.jpg'}
-
-              %h3
-                As a Mentor
-
-              .row
-                .col-xs-12
-                  %ul
-                    %li
-                      Build leadership skills
-                    %li
-                      Confirmation of skills
-                    %li
-                      Be part of a cause
-
-          .row
-            .col-sm-2.hidden-xs
-            .col-xs-12.col-sm-8
-              %p.summary
-                The journey of a mentor and student is mutually beneficial. It is about
-                sharing, humility, and openness to new thought. Both people gain insight
-                on how to better approach a challenge.
-            .col-sm-2.hidden-xs
-
-
-    %script{type: 'text/javascript', src: '//code.jquery.com/jquery-1.11.0.min.js'}
-    %script{type: 'text/javascript', src: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js'}
-    %script{type: 'text/javascript', src: '/js/application.js'}
-    - if ENV['RACK_ENV'] == 'production'
-      :javascript
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-53633294-1', 'auto');
-          ga('send', 'pageview');

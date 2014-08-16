@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     !!confirmed_at
   end
 
+  def github
+    @github ||= identities.github
+  end
+
   def send_confirmation!
     #UserMailer.confirmation_instructions(self).deliver
     update_attributes(confirmation_sent_at: DateTime.now)
