@@ -26,9 +26,6 @@ module MentorMatch
       end
 
       base.get '/auth/github/callback' do
-        $stdout.puts session[:csrf]
-        $stdout.puts params[:code]
-
         if params[:state].gsub(' ', '+') == session['auth.state']
           response = connection(GITHUB_URL).get do |request|
             request.url GITHUB_TOKEN_URL
@@ -56,8 +53,6 @@ module MentorMatch
           }, current_user)
 
           session['auth.entity_id'] = user.id
-
-          $stdout.puts client.user.inspect
         else
           halt 403, 'state not authentic'
         end
