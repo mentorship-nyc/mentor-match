@@ -1,22 +1,28 @@
 require 'haml'
-require 'json'
-require 'securerandom'
 require 'sinatra'
+require 'sinatra/activerecord'
 require 'mentor_match/user_mailer'
 require 'mentor_match/slack'
 require 'mentor_match/concerns'
 
 module MentorMatch
   class Application < Sinatra::Base
+    register Sinatra::ActiveRecordExtension
+
     set :root,  "#{File.dirname(__FILE__)}/../../"
     set :views, Proc.new { File.join(root, 'views') }
+    set :environment, (ENV['RACK_ENV'] || :development).to_sym
 
     include HealthCheck
+    include EmailMessaging
+    include Csrf
+    include OAuthProviders
 
     configure do
       set :haml, format: :html5
       enable :sessions
       enable :logging
+      set :database, ENV['DATABASE_URL']
     end
 
     configure :development do
@@ -28,70 +34,18 @@ module MentorMatch
     end
 
     get '/' do
-      @csrf = session[:csrf] = SecureRandom.base64(32)
       haml :index
     end
 
-    post '/messaging/email/team' do
-      events = JSON.parse(params['mandrill_events'])
-      event = events[0]
-
-      if event && event['event'] == 'inbound'
-        message = event['msg']
-
-        Pony.mail({
-          to: 'chad.pry@gmail.com',
-          from: "#{message['from_name']} <#{message['from_email']}>",
-          subject: "FWD: #{message['subject']}",
-          html_body: message['html']
-        })
-      end
-    end
-
-    post '/messaging/email/slack' do
-      events = JSON.parse(params['mandrill_events'])
-      event = events[0]
-
-      if event && event['event'] == 'inbound'
-        message = event['msg']
-
-        text = <<-TEXT
-          *ACCESS REQUEST*: #{message['from_email']} -> #{message['subject']}\n\n#{message['text']}
-        TEXT
-
-        Slack.message('#invites', 'slackbox', text)
-      end
-    end
-
     post '/signup' do
-      when_successful_post do
-        UserMailer.signup(params[:name], params[:email], params[:role])
-        Slack.signup(params[:name], params[:email], params[:role])
+      UserMailer.signup(params[:name], params[:email], params[:role])
+      Slack.signup(params[:name], params[:email], params[:role])
 
-        redirect to('/')
-      end
+      redirect to('/')
     end
 
     get '/*' do
-      read_static_file(params[:splat].first)
-    end
-
-    def read_static_file(name)
-      full_path = File.join(settings.root, 'public', name)
-
-      if File.exist?(full_path)
-        File.read(full_path)
-      else
-        status 404
-      end
-    end
-
-    def when_successful_post
-      if session[:csrf] == params[:csrf]
-        yield
-      else
-        status 400
-      end
+      static!(params[:splat].first)
     end
   end
 end
