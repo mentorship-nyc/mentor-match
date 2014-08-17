@@ -1,26 +1,28 @@
 .container-fluid.challenges
-  .row
+  .row.content-head
     .col-xs-12
       %h2
         Challenges
         %span.fa.fa-trophy.fa-2x
 
-      %p.detail
-        == #{@challenges.length} total
+        %p.detail
+          == #{@challenges.length} total
 
   .row
-    .col-xs-12
-      - @challenges.each do |challenge|
-        .row
-          .col-xs-12.col-sm-6.challenge
-            .row
-              .col-xs-12.name
-                = challenge[:name]
+    .col-xs-12.content-body
+      .col-xs-12
+        - @challenges.each do |challenge|
+          .row
+            .col-xs-12.col-sm-6.challenge
+              .row
+                .col-xs-12.name
+                  %a{href: "/challenges/#{challenge.id}/#{challenge.slug}"}<
+                    = challenge.name
 
-            .row
-              .col-xs-12.description
-                = challenge[:description]
+              .row
+                .col-xs-12.description
+                  = challenge.description
 
-            .row
-              .col-xs-12.detail
-                == Difficulty: #{challenge[:difficulty]}
+              .row
+                .col-xs-12.detail
+                  == Difficulty: #{challenge.difficulty}

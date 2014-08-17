@@ -1,16 +1,17 @@
 .container-fluid.profile
   .row
-    .col-xs-2
-      %img{alt: 'profile image', src: current_user.image}
+    %h2
+      .col-xs-2
+        %img{alt: 'profile image', src: current_user.image}
 
-    .col-xs-10
-      - if current_user.github.nickname
-        %h3
-          = current_user.github.nickname
+      .col-xs-10
+        - if current_user.github.nickname
+          %h3
+            = current_user.github.nickname
 
-      - if current_user.name
-        %h3
-          = current_user.name
+        - if current_user.name
+          %h3
+            = current_user.name
 
   .row
     .col-xs-12
