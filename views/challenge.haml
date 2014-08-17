@@ -11,20 +11,20 @@
           = RDiscount.new(@challenge.problem).to_html
 
       .row
-        .col-xs-12.edit-area
-          .row
-            .col-xs-12
-              .dropdown
-                %a#iLabel{'role' => :button, 'data-toggle' => :dropdown, 'data-target' => '#', 'href' => ''}
-                  Language
-                  %span.caret
-
-                %ul.dropdown-menu{'role' => :menu, 'aria-labelledby' => 'dLabel'}
-                  %li
-                    %a{'data-target' => '#', 'data-language' => 'ace/mode/ruby'} Ruby
-
-                  %li
-                    %a{'data-target' => '#', 'data-language' => 'ace/mode/javascript'} JavaScript
+        .col-xs-12
+          .col-xs-12.editor-settings
+            .row
+              .col-xs-3
+                %select#language-select
+                  %option{value: 'ace/mode/ruby'} Ruby
+                  %option{value: 'ace/mode/javascript'} JavaScript
+                  %option{value: 'ace/mode/coffee'} CoffeeScript
+                  %option{value: 'ace/mode/java'} Java
+              .col-xs-3
+                %select#keyboard-select
+                  %option{value: 'ace/keyboard/vim'} Vim
+                  %option{value: 'ace/keyboard/keybinding'} Text
+                  %option{value: 'ace/keyboard/emacs'} Emacs
 
           .row
             .col-xs-12

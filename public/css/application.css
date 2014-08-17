@@ -128,8 +128,20 @@ h2 p.detail {
   letter-spacing: .05em;
 }
 
-.edit-area {
-  margin-top: 20px;
+.editor-settings {
+  background: #fff;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+.ace_scroller {
+  margin: 5px;
+}
+
+#editor.ace-xcode .ace_marker-layer .ace_active-line {
+  background: transparent;
 }
 
 #editor {
@@ -141,10 +153,6 @@ h2 p.detail {
   position: absolute;
   right: 15px;
   top: 0;
-}
-
-.hero {
-  margin-top: -20px;
 }
 
 .hero > .row > div {
