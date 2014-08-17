@@ -89,6 +89,16 @@ module MentorMatch
       end
     end
 
+    def authenticate!
+      unless authenticated?
+        redirect to("/auth/github?redirect_uri=#{request.path}")
+      end
+    end
+
+    def authenticated?
+      !!session['auth.entity_id']
+    end
+
     def current_user
       session['auth.entity_id'] && User.where(id: session['auth.entity_id']).first
     end

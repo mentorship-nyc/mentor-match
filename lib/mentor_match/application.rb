@@ -1,4 +1,5 @@
 require 'haml'
+require 'rdiscount'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'mentor_match/user_mailer'

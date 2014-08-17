@@ -1,14 +1,24 @@
 body {
+  background-color: #efefef;
   font-size: 12px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .navbar {
+  background-color: #fff;
   border-bottom: 1px solid #aaa;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;;
   letter-spacing: .07em;
+  margin-bottom: 0;
   min-height: 0;
-  margin-bottom: 20px;
+}
+
+.navbar > .container-fluid {
+  padding-top: 0;
 }
 
 .navbar-nav > li > a {
@@ -79,16 +89,37 @@ body {
 
 .challenges h2 {
   font-size: 3em;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 
-.challenges span.fa-trophy {
+h2 span.fa-trophy {
   font-size: 1.2em;
 }
 
-.challenges .detail {
+h2 p.detail {
   color: #aaa;
-  font-size: 1.2em;
+  font-size: 0.5em;
+}
+
+.challenge {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 15px 20px;
+}
+
+.challenge .name {
+  font-size: 1.8em;
+}
+
+.content-head {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.content-body {
 }
 
 .problem {
@@ -102,11 +133,12 @@ body {
 }
 
 #editor {
+  border: 1px solid #aaa;
+  bottom: 0;
   font-size: 14px;
   height: 200px;
-  position: absolute;
-  bottom: 0;
   left: 15px;
+  position: absolute;
   right: 15px;
   top: 0;
 }

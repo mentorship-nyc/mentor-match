@@ -6,19 +6,14 @@ module MentorMatch
       end
 
       base.get '/challenges' do
-        @challenges = []
+        @challenges = Challenge.limit(20)
         haml :challenges, layout: DEFAULT_LAYOUT
       end
-    end
 
-    def authenticate!
-      unless authenticated?
-        redirect to("/auth/github?redirect_uri=#{request.path}")
+      base.get '/challenges/:id/:name' do
+        @challenge = Challenge.where(id: params[:id]).first
+        haml :challenge, layout: DEFAULT_LAYOUT
       end
-    end
-
-    def self.authenticated?
-      !!session['auth.entity_id']
     end
   end
 end
