@@ -1,0 +1,59 @@
+.container-fluid.signup-steps
+  .row
+    .col-xs-12.col-sm-10.col-md-8.col-lg-6
+      %h2
+        Congratulations on signing up!
+      
+      %p
+        An email has been sent as well.  We are
+        excited to have you here and look forward to matching you with someone
+
+        - if session['auth.signup.role'] == 'mentor'
+          you
+        - else
+          who
+
+        can help. If you have any questions or feedback in the meantime, feel contact
+        %a{href: 'mailto:team@mentoring-nyc.com'}<
+          team@mentoring-nyc.com.
+      
+      %h3
+        What is next?
+
+      %ul
+        %li
+          %span.fa.fa-envelope-o.fa-2x
+          Team member will contact you
+
+          %p
+            A member of our team will review your profile submission and be
+            in touch.
+
+        %li
+          %span.fa.fa-slack.fa-2x
+          Join our
+          %a{href: 'http://www.slack.com', target: '_blank'}<
+            Slack
+          group!
+
+          %p
+            We have created an online chat community for Mentoring NYC. It is
+            setup so students and mentors can ask questions, meet new people,
+            and potentially hear relevant topics.  If you would like to join,
+            send an email to
+            %a{href: 'slack@mentoring-nyc.com'}<
+              slack@mentoring-nyc.com
+            and one of the team will send you and invite.
+
+        %li
+          %span.fa.fa-calendar.fa-2x
+          Outings
+
+          %p
+            We are considering a group outing where all mentors and students
+            can attend and meet the community in person. A location has not
+            yet been decided, so if you have interest send an email to
+            %a{href: 'team@mentoring-nyc.com'}<
+              team@mentoring-nyc.com
+            and share your thoughts!
+

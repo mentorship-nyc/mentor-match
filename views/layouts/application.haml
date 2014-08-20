@@ -15,13 +15,22 @@
     %link{href: '/css/application.css', rel: :stylesheet, media: 'all'}
 
   %body
-    = haml :'shared/navigation', current_user: current_user
+    = haml :'layouts/navigation', current_user: current_user
+
+    - if flash.present?
+      - flash.each do |type, message|
+        .alert.alert-dismissable{class: flash_transform(type)}<
+          %button.close{type: :button, 'data-dismiss' => 'alert'}
+            %span{'aria-hidden' => 'true'} &times;
+            %span.sr-only Close
+          = message
 
     = yield
 
     %script{type: 'text/javascript', src: '//code.jquery.com/jquery-1.11.0.min.js'}
     %script{type: 'text/javascript', src: '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js'}
     %script{type: 'text/javascript', src: '/js/select2.min.js'}
+    %script{type: 'text/javascript', src: '/js/bootstrap/alert.js'}
     %script{type: 'text/javascript', src: '/js/bootstrap/collapse.js'}
     %script{type: 'text/javascript', src: '/js/bootstrap/dropdown.js'}
     %script{type: 'text/javascript', src: '/js/application.js'}

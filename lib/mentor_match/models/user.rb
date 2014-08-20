@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   after_create  {|model| model.send_confirmation!}
 
   has_many :identities
-  has_many :calendars
-  has_many :meetings
+  has_one  :profile
 
   def self.find_with_oauth(hash, signed_in_user)
     identity = Identity.create_with_oauth(hash)

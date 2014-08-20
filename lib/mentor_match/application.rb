@@ -2,6 +2,7 @@ require 'haml'
 require 'rdiscount'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/flash'
 require 'mentor_match/user_mailer'
 require 'mentor_match/slack'
 require 'mentor_match/concerns'
@@ -9,11 +10,13 @@ require 'mentor_match/concerns'
 module MentorMatch
   class Application < Sinatra::Base
     register Sinatra::ActiveRecordExtension
+    register Sinatra::Flash
 
     set :root,  "#{File.dirname(__FILE__)}/../../"
     set :views, Proc.new { File.join(root, 'views') }
 
     include HealthCheck
+    include ControllerToolkit
     include EmailMessaging
     include Csrf
     include OAuthProviders
@@ -27,6 +30,10 @@ module MentorMatch
 
       def current_user
         @current_user ||= User.where(id: session['auth.entity_id']).first
+      end
+
+      def has_value(user, attribute, value)
+        user.send(attribute) == value
       end
     end
 
@@ -45,14 +52,7 @@ module MentorMatch
     end
 
     get '/' do
-      haml :index, layout: DEFAULT_LAYOUT
-    end
-
-    post '/signup' do
-      UserMailer.signup(params[:name], params[:email], params[:role])
-      Slack.signup(params[:name], params[:email], params[:role])
-
-      redirect to('/')
+      show :index
     end
 
     get '/signout' do

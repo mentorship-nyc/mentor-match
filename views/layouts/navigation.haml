@@ -1,7 +1,7 @@
 %nav.navbar{role: :navigation}
   .container-fluid
     .navbar-header
-      %button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#navbar-collapse'}
+      -#%button.navbar-toggle{type: :button, 'data-toggle' => :collapse, 'data-target' => '#navbar-collapse'}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
@@ -9,7 +9,7 @@
 
       %a.navbar-brand{href: '/'} Mentoring NYC
 
-    .collapse.navbar-collapse#navbar-collapse
+    -#.collapse.navbar-collapse#navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         - if authenticated?
           %li.dropdown

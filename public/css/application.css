@@ -7,6 +7,61 @@ a:hover {
   text-decoration: none;
 }
 
+h2 {
+  font-size: 2.5em;
+  line-height: 1.3em
+}
+
+p {
+  color: #666;
+  font-family: 'Merriweather';
+  font-weight: 200;
+  line-height: 1.7;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+input[type=checkbox], input[type=radio] {
+  margin: 4px 0 0 0;
+}
+
+.alert {
+  font-size: 14px;
+  padding: 10px 35px 10px 15px;
+}
+
+.signup-steps {
+  margin-bottom: 30px;
+}
+
+.signup-steps p {
+  font-size: 1.2em;
+}
+
+.signup-steps li {
+  font-size: 1.6em;
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.signup-steps li span.fa {
+  font-size: 1.4em;
+}
+
+.signup-steps li p {
+  font-size: 0.75em;
+}
+
+.signup-steps h3 {
+  margin-top: 30px;
+}
+
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #aaa;
@@ -74,17 +129,70 @@ a:hover {
   font-size: 0.9em;
 }
 
-.profile img {
+.profile {
+  margin-top: 20px;
+}
+
+.profile label {
+  text-transform: capitalize;
+}
+
+.profile .radio {
+  margin-bottom: 0;
+}
+
+.profile .glyphicon.textarea {
+  margin-right: 15px;
+}
+
+.profile .image {
+  margin-bottom: 5px;
+}
+
+.profile .image img {
   border-radius: 8px;
-  width: 100%;
+  width: 230px;
 }
 
-.profile h3 {
+.profile .name {
   color: #444;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
 
-.profile hr {
+.profile .divider {
+  width: 230px;
+}
+
+.profile .divider hr {
   border-top: 1px solid #ccc;
+}
+
+.profile .note-with-icon {
+  font-size: 15px;
+  margin-left: 2px;
+}
+
+.profile .fa-map-marker, .profile .fa-github, .profile .fa-clock-o {
+  color: #ccc;
+  font-size: 18px;
+  margin-right: 5px;
+  text-align: center;
+  width: 15px;
+}
+
+.profile label {
+  font-size: 14px;
+}
+
+.profile .form-group {
+  margin: 0 0 10px 0;
+}
+
+.profile .checkbox:first-child, .radio:first-child {
+  margin-top: 0;
 }
 
 .challenges h2 {
@@ -155,6 +263,10 @@ h2 p.detail {
   top: 0;
 }
 
+.hero {
+  font-size: 1.3em;
+}
+
 .hero > .row > div {
   background-image: url(/images/backgrounds/mountain-path.jpg);
   background-position: center;
@@ -212,7 +324,7 @@ h2 p.detail {
 
 .mission .subtitle {
   font-family: 'Droid Serif';
-  font-size: 1.25em;
+  font-size: 0.95em;
   font-style: italic;
   letter-spacing: .07em;
   margin: 10px auto;
@@ -221,7 +333,7 @@ h2 p.detail {
 
 .mission .title {
   font-family: 'Montserrat', sans-serif;;
-  font-size: 2.2em;
+  font-size: 1.65em;
   font-weight: 700;
   letter-spacing: .07em;
   line-height: 1;
@@ -233,7 +345,7 @@ h2 p.detail {
   margin: 10px auto;
 }
 
-.mission .action button {
+.mission .action .btn-signup {
   font-size: 1.1em;
   letter-spacing: .08em;
   padding: 10px 20px;
@@ -266,11 +378,7 @@ h2 p.detail {
 }
 
 .content p {
-  color: #666;
-  font-family: 'Merriweather';
   font-size: 1.2em;
-  font-weight: 200;
-  line-height: 1.7;
   margin: 20px 0;
   text-indent: 20px;
 }
@@ -313,7 +421,7 @@ h2 p.detail {
     margin: 20px auto;
   }
 
-  .mission .action button {
+  .mission .action .btn-signup {
     font-size: 1em;
   }
 }
