@@ -5,7 +5,7 @@ module MentorMatch
     SLACK_HTTPS_URL = 'https://slack.com'
 
     def self.signup(name, email, role)
-      message '#mentorship', 'slackbot', <<-TEXT
+      message '#signups', 'slackbot', <<-TEXT
         *Heads up everyone!* #{name} -> #{email} just signed up on www.mentoring-nyc.com to be a #{role}.
         If anyone is a available and wants to collaborate, send him/her an email.
       TEXT
