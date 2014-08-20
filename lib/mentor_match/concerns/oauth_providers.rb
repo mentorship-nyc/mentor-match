@@ -45,12 +45,7 @@ module MentorMatch
             credentials: {
               token: response.body['access_token']
             },
-            info: {
-              email: client.user.email,
-              name: client.user.name,
-              image: client.user.avatar_url,
-              location: client.user.location
-            }
+            info: client.user
           }, current_user)
 
           session['auth.entity_id'] = user.id
@@ -86,29 +81,6 @@ module MentorMatch
         else
           halt 403, 'state not authentic'
         end
-      end
-    end
-
-    def authenticate!
-      unless authenticated?
-        redirect to("/auth/github?redirect_uri=#{request.path}")
-      end
-    end
-
-    def authenticated?
-      !!session['auth.entity_id']
-    end
-
-    def current_user
-      session['auth.entity_id'] && User.where(id: session['auth.entity_id']).first
-    end
-
-    def connection(url)
-      Faraday.new(url: url) do |faraday|
-        faraday.request  :url_encoded
-        faraday.response :logger
-        faraday.response :json, :content_type => /\json$/
-        faraday.adapter  Faraday.default_adapter
       end
     end
   end

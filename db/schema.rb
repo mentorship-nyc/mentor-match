@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816214217) do
+ActiveRecord::Schema.define(version: 20140820034716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140816214217) do
   create_table "challenges", force: true do |t|
     t.string   "name",        limit: 100, null: false
     t.string   "description",             null: false
-    t.string   "difficult",   limit: 10,  null: false
+    t.string   "difficulty",  limit: 10,  null: false
     t.text     "problem",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20140816214217) do
 
   add_index "identities", ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true, using: :btree
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.integer "user_id",                  null: false
+    t.string  "bio",          limit: 500, null: false
+    t.string  "availability", limit: 25,  null: false
+    t.string  "skills",                   null: false
+    t.string  "role",         limit: 25,  null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                           null: false

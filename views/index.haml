@@ -15,40 +15,10 @@
                   Experience &amp; Craft
 
             .action
-              %button.btn.btn-warning.btn-signup
+              %a.btn.btn-warning.btn-signup{href: '/signup/benefits'}
                 Signup
 
 .container{style: 'position: relative'}
-  .row#slidebox{style: 'display: none;'}
-    .col-xs-hidden.col-sm-2
-    .signup.col-xs-12.col-sm-8
-      %form{action: '/signup', role: :form, method: :post}
-        %input{type: :hidden, name: :csrf, value: @csrf}
-
-        .form-group
-          %label{for: :name} Name
-          %input.form-control{type: :text, name: :name, id: :name, placeholder: 'Enter name'}
-
-        .form-group
-          %label{for: :email} Email Address
-          %input.form-control{type: :email, name: :email, placeholder: 'Enter email'}
-
-        .form-group
-          .row
-            .col-xs-6
-              %label
-                %input{type: :radio, name: :role, value: 'student'}
-                Student
-
-            .col-xs-6
-              %label
-                %input{type: :radio, name: :role, value: 'mentor'}
-                Mentor
-
-        .actions.text-right
-          %button.btn.btn-primary{type: :submit} Submit
-    .col-xs-hidden.col-sm-2
-
   .row
     .content.col-xs-12.text-center
       %h2

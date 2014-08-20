@@ -1,0 +1,73 @@
+.container-fluid.profile
+  %form{action: '/signup/complete-profile', method: :post}
+    %input{type: :hidden, name: :csrf, value: @csrf}
+    .row
+      .col-xs-12.col-sm-4{style: 'width: 270px;'}
+        %p.image
+          %img{alt: "image of #{current_user.name}", src: current_user.image}
+
+        %h2.name
+          = current_user.name
+
+        .divider
+          %hr
+
+        .note-with-icon.location
+          %span.fa.fa-map-marker
+          = current_user.location
+
+        .note-with-icon.github
+          %span.fa.fa-github
+          %a{href: "https://github.com/#{current_user.github.nickname}", rel: :external}<
+            = current_user.github.nickname
+
+        .note-with-icon.created
+          %span.fa.fa-clock-o
+          == Since #{current_user.created_at.strftime('%B %d, %Y')}
+
+      .col-xs-12.col-sm-8.col-md-6
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              Profile
+
+          .panel-body
+            .row
+              .col-xs-12
+                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:bio].present?)}
+                  %label.control-label{for: :bio}
+                    Bio
+
+                  %textarea.form-control{rows: 6, name: :'user[bio]', placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}<
+                    = @profile.bio
+
+                  - if current_user.errors.messages[:bio].present?
+                    %span.textarea.glyphicon.form-control-feedback.glyphicon-remove
+
+            .row
+              .col-xs-12
+                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:availability].present?)}
+                  %label.control-label{for: :availability}<
+                    Availability
+
+                  .row
+                    - Profile::AVAILABILITIES.each_slice(3).each do |array|
+                      - array.each do |availability|
+                        .col-xs-6
+                          .radio
+                            %label
+                              %input{type: :radio, name: :'user[availability]', checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
+                              = availability.capitalize
+
+            .row
+              .col-xs-12
+                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:skills].present?)}
+                  %label.control-label{for: :skills}<
+                    Current Skills
+                  %input.form-control#skill{type: :text, name: :'user[skills]', value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS'}
+
+                  - if current_user.errors.messages[:skills].present?
+                    %span.glyphicon.form-control-feedback.glyphicon-remove
+
+            .actions.text-right
+              %button.btn.btn-primary{type: :submit} Submit Profile
