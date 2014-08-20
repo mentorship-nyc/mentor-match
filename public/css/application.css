@@ -40,6 +40,10 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 30px;
 }
 
+.signup-steps p {
+  font-size: 1.2em;
+}
+
 .signup-steps li {
   font-size: 1.6em;
   font-weight: 700;
