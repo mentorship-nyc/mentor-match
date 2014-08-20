@@ -1,6 +1,14 @@
 module MentorMatch
   module Profile
     def self.included(base)
+      base.before '/signup/complete-profile' do
+        authenticate!
+      end
+
+      base.before '/signup/success' do
+        authenticate!
+      end
+
       base.before '/profile' do
         authenticate!
       end
