@@ -46,7 +46,7 @@ module MentorMatch
               token: response.body['access_token']
             },
             info: client.user
-          }, current_user)
+          })
 
           session['auth.entity_id'] = user.id
           redirect to(session['auth.redirect_uri'])
