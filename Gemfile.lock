@@ -56,6 +56,12 @@ GEM
       rack
     rack-timeout (0.0.4)
     rdiscount (2.1.7.1)
+    redis (3.1.0)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.4)
+      redis (>= 2.2)
     sawyer (0.5.4)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
@@ -95,6 +101,8 @@ DEPENDENCIES
   rack-protection
   rack-timeout
   rdiscount
+  redis-rack
+  redis-store
   sinatra
   sinatra-activerecord
   sinatra-flash
