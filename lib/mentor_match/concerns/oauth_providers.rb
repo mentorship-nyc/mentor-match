@@ -45,7 +45,13 @@ module MentorMatch
             credentials: {
               token: response.body['access_token']
             },
-            info: client.user
+            info: {
+              nickname: client.user.login,
+              email: client.emails.detect {|e| e[:primary] }[:email],
+              name: client.user.name,
+              image: client.user.avatar_url,
+              location: client.user.location
+            }
           })
 
           session['auth.entity_id'] = user.id

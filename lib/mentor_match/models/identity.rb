@@ -20,10 +20,10 @@ class Identity < ActiveRecord::Base
     identity = where(unique_values(hash)).first_or_create
 
     identity.token =           hash[:credentials][:token]
-    identity.nickname =        hash[:info][:login]
+    identity.nickname =        hash[:info][:nickname]
     identity.email =           hash[:info][:email]
     identity.full_name =       hash[:info][:name]
-    identity.image =           hash[:info][:avatar_url]
+    identity.image =           hash[:info][:image]
     identity.location =        hash[:info][:location]
 
     identity.save if identity.changed?

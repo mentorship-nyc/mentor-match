@@ -16,14 +16,14 @@
           %span.fa.fa-map-marker
           = current_user.location
 
-        .note-with-icon.github
+        -#.note-with-icon.github
           %span.fa.fa-github
           %a{href: "https://github.com/#{current_user.github.nickname}", rel: :external}<
             = current_user.github.nickname
 
         .note-with-icon.created
           %span.fa.fa-clock-o
-          == Since #{current_user.created_at.strftime('%B %d, %Y')}
+          == Created #{current_user.created_at.strftime('%B %d, %Y')}
 
       .col-xs-12.col-sm-8.col-md-6
         .panel.panel-default

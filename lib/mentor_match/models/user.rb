@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :identities
   has_one  :profile
 
-  def self.find_with_oauth(hash, signed_in_user)
+  def self.find_with_oauth(hash, signed_in_user = nil)
     identity = Identity.create_with_oauth(hash)
 
     if signed_in_user
