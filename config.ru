@@ -2,6 +2,7 @@ $:.unshift './lib'
 
 require 'rack'
 require 'rack/health'
+require 'rack/request_inspector'
 require 'rack/protection'
 require 'rack/session/redis'
 require 'redis-store'
@@ -13,6 +14,7 @@ require 'mentor_match/application'
 require 'initializers'
 
 
+use Rack::RequestInspector, level: ::Logger::INFO, logger: ::Logger.new('./log/request-inspector.log')
 use Rack::Health, routes: ['/ping', '/PING'], response: ['PONG']
 use Rack::Session::Redis, redis_server: ENV['REDISCLOUD_URL']
 use Rack::Protection
