@@ -14,7 +14,7 @@ module MentorMatch
       base.before do
         if request.get? || request.form_data?
           @csrf = session[:csrf] = SecureRandom.base64(32)
-          puts @csrf
+          puts "url: #{request.path} (#{@csrf}) #{session.id}"
         end
       end
     end
