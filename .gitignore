@@ -5,7 +5,7 @@
 /.config
 config/database.yml
 /coverage/
-/log/*.log
+*.log
 /spec/reports/
 /tmp/
 
