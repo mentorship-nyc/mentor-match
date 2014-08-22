@@ -16,6 +16,8 @@ require 'initializers'
 # Browser -> Puma -> Health -> Static -> RequestInspector -> Redis -> Protection -> Timeout -> Sinatra
 # Browser <- Puma <- Health <- Static <- RequestInspector <- Redis <- Protection <- Timeout <- Sinatra
 
+`mkdir ./log`
+
 use Rack::Health, routes: ['/ping', '/PING'], response: ['PONG']
 use Rack::Static, root: 'public', urls: ['/favicon.ico', '/js', '/css', '/images']
 use Rack::RequestInspector, level: ::Logger::INFO, logger: ::Logger.new('./log/request-inspector.log')
