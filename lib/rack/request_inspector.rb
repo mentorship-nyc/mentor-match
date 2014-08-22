@@ -60,6 +60,7 @@ module Rack
 
       @logger.info "Started: #{inspector_context[STARTED]}"
       @logger.info "Finished: #{inspector_context[FINISHED]}"
+      @logger.info "#{env['REQUEST_METHOD']} #{env['REQUEST_PATH']} #{env['HTTP_VERSION']}"
       @logger.info "#{diff_in_millis(inspector_context[STARTED], inspector_context[FINISHED])}ms"
     end
 

@@ -59,9 +59,5 @@ module MentorMatch
       session.clear
       redirect to(back)
     end
-
-    get '/*' do
-      static!(params[:splat].first)
-    end
   end
 end
