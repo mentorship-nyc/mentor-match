@@ -15,7 +15,6 @@ module MentorMatch
     set :root,  "#{File.dirname(__FILE__)}/../../"
     set :views, Proc.new { File.join(root, 'views') }
 
-    include HealthCheck
     include ControllerToolkit
     include EmailMessaging
     include Csrf
@@ -59,10 +58,6 @@ module MentorMatch
     get '/signout' do
       session.clear
       redirect to(back)
-    end
-
-    get '/*' do
-      static!(params[:splat].first)
     end
   end
 end
