@@ -1,5 +1,3 @@
-require 'awesome_print'
-
 module Rack
   class RequestInspector
     RACK_SESSION_CONTEXT = 'rack.session'
