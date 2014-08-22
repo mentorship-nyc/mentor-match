@@ -21,6 +21,7 @@ use Rack::Static, root: 'public', urls: ['/favicon.ico', '/js', '/css', '/images
 use Rack::RequestInspector, level: ::Logger::INFO, logger: ::Logger.new('./log/request-inspector.log')
 use Rack::Session::Redis, redis_server: ENV['REDISCLOUD_URL']
 use Rack::Protection
+use Rack::Protection::AuthenticityToken
 use Rack::Timeout
 
 Rack::Timeout.timeout = 10
