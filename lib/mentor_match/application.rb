@@ -40,7 +40,7 @@ module MentorMatch
     configure do
       set :haml, format: :html5
       enable :sessions
-      set :session_secret, 'this is a test secret session'#ENV['SESSION_SECRET']
+      set :session_secret, ENV['SESSION_SECRET']
       enable :logging
     end
 
