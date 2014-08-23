@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   ]
 
   after_create do |model|
-    Slack.advertise_profile(model)
+    MentorMatch::Slack.advertise_profile(model)
   end
 
   validates :bio,          length: {maximum: 500}, allow_blank: false
