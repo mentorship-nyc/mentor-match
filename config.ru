@@ -19,7 +19,7 @@ require 'initializers'
 use Rack::Health, routes: ['/ping', '/PING'], response: ['PONG']
 use Rack::Static, root: 'public', urls: ['/favicon.ico', '/js', '/css', '/images']
 use Rack::RequestInspector, level: ::Logger::INFO,
-  logger: ::Logger.new(File.open(File.expand_path('./log/request-inspector.log'), 'a+'))
+  logger: ::Logger.new(File.open(File.expand_path('request-inspector.log'), 'wa+'))
 use Rack::Session::Redis, redis_server: ENV['REDISCLOUD_URL']
 use Rack::Protection
 use Rack::Protection::AuthenticityToken
