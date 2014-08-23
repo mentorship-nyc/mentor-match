@@ -13,7 +13,7 @@ module MentorMatch
 
     def self.advertise_profile(model)
       message '#signups', 'slackbot', <<-TEXT
-        *Heads up everyone!* #{model.user.name} -> #{model.user.email} just signed up on www.mentoring-nyc.com to be a #{profile.role}.
+        *Heads up everyone!* #{model.user.name} -> #{model.user.email} just signed up on www.mentoring-nyc.com to be a #{model.role}.
         If anyone is a available and wants to collaborate, send him/her an email.
       TEXT
     end
