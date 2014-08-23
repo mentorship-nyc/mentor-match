@@ -1,5 +1,3 @@
-require 'slack'
-
 class Profile < ActiveRecord::Base
 
   AVAILABILITIES = [
