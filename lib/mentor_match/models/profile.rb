@@ -1,8 +1,14 @@
+require 'slack'
+
 class Profile < ActiveRecord::Base
 
   AVAILABILITIES = [
     'weekly', 'bi-weekly', 'weekends', 'week-nights', 'other'
   ]
+
+  after_create do |model|
+    Slack.advertise_profile(model)
+  end
 
   validates :bio,          length: {maximum: 500}, allow_blank: false
   validates :availability, inclusion: {in: AVAILABILITIES}
