@@ -48,14 +48,15 @@ $('.spotlight .profile .img').each(function(index, element) {
     container: '#' + $profile.attr('id'),
     content: profileContent($profile),
     html: true,
-    placement: 'auto right',
+    placement: 'auto',
     title: profileTitle($profile),
     trigger: 'hover'
   });
 
   $profile.on('shown.bs.popover', function() {
-    var left = $profile.find('.popover').css('left').slice(0, -2);
-    $profile.find('.popover').css('left', (left - 10) + 'px');
+    var left = +$profile.find('.popover').css('left').slice(0, -2);
+    $profile.find('.popover').css('left', (left + 45) + 'px');
+    console.log($profile.find('.popover').css('left'));
   });
 });
 
