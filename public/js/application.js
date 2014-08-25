@@ -52,12 +52,6 @@ $('.spotlight .profile .img').each(function(index, element) {
     title: profileTitle($profile),
     trigger: 'hover'
   });
-
-  $profile.on('shown.bs.popover', function() {
-    $this_profile = $(this);
-    var left = +$this_profile.find('.popover').css('left').slice(0, -2);
-    $this_profile.find('.popover').css('left', (left + 45) + 'px');
-  });
 });
 
 $('a[rel=external]').each(function(index, element) {

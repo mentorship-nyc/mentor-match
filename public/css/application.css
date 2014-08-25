@@ -437,9 +437,8 @@ h2 p.detail {
   background-color: #fff;
   font-family: 'Montserrat';
   margin-bottom: 20px;
-  margin-left: -50px;
   max-width: 350px;
-  width: 350px;
+  width: 300px;
 }
 
 .popover-content {
