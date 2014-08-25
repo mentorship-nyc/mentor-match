@@ -14,10 +14,20 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  def availability_matches
+    if availability == 'open'
+      AVAILABILITIES
+    elsif AVAILABILITIES[0..2].include? availability
+      AVAILABILITIES[0..2]
+    elsif availability == 'weekends'
+      AVAILABILITIES[3]
+    end
+  end
+
   def matches
     Profile.includes(:user).
-      where(availability: availability).
-      where(availability: 'open').
+      where(availability: availability_matches).
+      where(role: opposite_role).
       where.not(id: id).
       limit(20)
   end
@@ -28,5 +38,9 @@ class Profile < ActiveRecord::Base
 
   def nickname
     user.github.nickname
+  end
+
+  def opposite_role
+    role ? 'student' : 'mentor' : 'student'
   end
 end
