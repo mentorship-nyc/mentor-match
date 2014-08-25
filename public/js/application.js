@@ -54,9 +54,9 @@ $('.spotlight .profile .img').each(function(index, element) {
   });
 
   $profile.on('shown.bs.popover', function() {
-    var left = +$profile.find('.popover').css('left').slice(0, -2);
-    $profile.find('.popover').css('left', (left + 45) + 'px');
-    console.log($profile.find('.popover').css('left'));
+    $this_profile = $(this);
+    var left = +$this_profile.find('.popover').css('left').slice(0, -2);
+    $this_profile.find('.popover').css('left', (left + 45) + 'px');
   });
 });
 
