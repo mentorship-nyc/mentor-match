@@ -461,6 +461,10 @@ h2 p.detail {
   text-transform: lowercase;
 }
 
+.popover-content p.bio {
+  text-transform: none;
+}
+
 .popover-content .list:after {
   clear: both;
   content: ".";

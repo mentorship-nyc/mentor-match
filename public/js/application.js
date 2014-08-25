@@ -5,7 +5,7 @@ function githubLink(username) {
 function profileTitle($element) {
   var segments = [];
 
-  segments.push('<div class="btn-group"><button type="button" class="btn btn-default">Contact</button></div>');
+  segments.push('<div class="btn-group"><button type="button" class="btn btn-primary">Contact</button></div>');
   segments.push($element.data('name'));
   segments.push('<p>' + $element.data('role') + '</p>');
 
