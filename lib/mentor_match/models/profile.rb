@@ -41,6 +41,6 @@ class Profile < ActiveRecord::Base
   end
 
   def opposite_role
-    role ? 'student' : 'mentor' : 'student'
+    role == 'student' ? 'mentor' : 'student'
   end
 end
