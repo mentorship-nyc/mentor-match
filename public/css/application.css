@@ -424,10 +424,16 @@ h2 p.detail {
 }
 
 .spotlight .profile .name {
+  color: #428bca;
+  cursor: pointer;
   font-size: 24px;
   font-weight: 400;
   line-height: 1;
   margin-bottom: 3px;
+}
+
+.spotlight .profile .name:hover {
+  color: #357ebd;
 }
 
 .spotlight .profile .location {
