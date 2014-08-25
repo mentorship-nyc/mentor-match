@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
 
   AVAILABILITIES = [
-    'weekly', 'bi-weekly', 'weekends', 'week-nights', 'other'
+    'weekly', 'bi-weekly', 'weekends', 'week-nights', 'open'
   ]
 
   after_create do |model|
@@ -14,4 +14,19 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  def matches
+    Profile.includes(:user).
+      where(availability: availability).
+      where(availability: 'open').
+      where.not(id: id).
+      limit(20)
+  end
+
+  def name
+    user.name
+  end
+
+  def nickname
+    user.github.nickname
+  end
 end
