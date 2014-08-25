@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
 
   AVAILABILITIES = [
-    'weekly', 'bi-weekly', 'weekends', 'week-nights', 'open'
+    'weekly', 'bi-weekly', 'week-nights', 'weekends', 'open'
   ]
 
   after_create do |model|
