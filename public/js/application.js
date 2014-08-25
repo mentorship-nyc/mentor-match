@@ -50,7 +50,7 @@ $('.spotlight .profile .img').each(function(index, element) {
     html: true,
     placement: 'auto',
     title: profileTitle($profile),
-    trigger: 'hover'
+    trigger: 'click'
   });
 
   $profile.on('shown.bs.popover', function() {

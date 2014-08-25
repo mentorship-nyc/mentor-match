@@ -417,6 +417,8 @@ h2 p.detail {
 
 .spotlight .profile img {
   -webkit-clip-path: circle(100px at 100px 100px);
+  border-radius: 8px;
+  cursor: pointer;
   height: 200px;
   width: 200px;
 }
