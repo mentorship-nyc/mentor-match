@@ -19,8 +19,12 @@ module MentorMatch
       end
     end
 
+    def current_profile
+      @current_profile ||= current_user.profile
+    end
+
     def current_user
-      authenticated? && User.where(id: session['auth.entity_id']).first
+      authenticated? && @current_user ||= User.where(id: session['auth.entity_id']).first
     end
 
     def flash_transform(type)

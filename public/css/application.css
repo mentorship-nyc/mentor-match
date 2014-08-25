@@ -404,6 +404,108 @@ h2 p.detail {
   font-size: 1.1em;
 }
 
+.spotlight .profile {
+  display: inline-block;
+  font-family: 'Montserrat';
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.spotlight .profile .img {
+  margin-bottom: 10px;
+}
+
+.spotlight .profile img {
+  -webkit-clip-path: circle(100px at 100px 100px);
+  height: 200px;
+  width: 200px;
+}
+
+.spotlight .profile .name {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.spotlight .profile .location {
+  color: #888;
+  font-size: 16px;
+}
+
+.popover {
+  background-color: #fff;
+  font-family: 'Montserrat';
+  margin-bottom: 20px;
+  margin-left: -50px;
+  max-width: 350px;
+  width: 350px;
+}
+
+.popover-content {
+  color: #888;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+}
+
+.popover-content h5 {
+  color: #333;
+  margin: 10px 0 0 0;
+}
+
+.popover-content h5:first-child {
+  margin: 0;
+}
+
+.popover-content p.github {
+  text-transform: lowercase;
+}
+
+.popover-content .list:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.popover-content .list p {
+  float: left;
+  margin-right: 10px;
+}
+
+.popover-content .list p span.fa {
+  margin-right: 5px;
+}
+
+.popover-content p {
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.popover-title {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  border-radius: 5px 5px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 10px 14px 5px 14px;
+}
+
+.popover-title .btn-group {
+  float: right;
+}
+
+.popover-title p {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
 @media (max-width: 640px) {
 }
 

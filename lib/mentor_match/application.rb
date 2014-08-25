@@ -4,7 +4,6 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'mentor_match/user_mailer'
-require 'mentor_match/slack'
 require 'mentor_match/concerns'
 
 module MentorMatch
@@ -21,6 +20,7 @@ module MentorMatch
     include OAuthProviders
     include Profile
     include Challenges
+    include Spotlight
 
     helpers do
       def authenticated?

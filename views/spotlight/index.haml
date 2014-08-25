@@ -1,0 +1,13 @@
+.container-fluid.spotlight
+  .row
+    .col-xs-12.text-center
+      - @profiles.each do |profile|
+        .profile{id: profile.nickname, :'data-availability' => profile.availability, :'data-bio' => profile.bio, :'data-name' => profile.name, :'data-role' => profile.role, :'data-skills' => profile.skills, :'data-toggle' => :popover}
+          .img
+            %img{src: profile.user.image}
+
+          .name
+            = profile.user.name
+
+          %p.location
+            = profile.user.location
