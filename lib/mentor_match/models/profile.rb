@@ -18,9 +18,9 @@ class Profile < ActiveRecord::Base
     if availability == 'open'
       AVAILABILITIES
     elsif AVAILABILITIES[0..2].include? availability
-      AVAILABILITIES[0..2]
+      AVAILABILITIES[0..2] << 'open'
     elsif availability == 'weekends'
-      AVAILABILITIES[3]
+      AVAILABILITIES.slice(3..3) << 'open'
     end
   end
 
