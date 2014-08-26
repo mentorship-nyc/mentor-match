@@ -35,8 +35,6 @@ module MentorMatch
 
           show :'signup/complete_profile'
         else
-          UserMailer.signup(current_user.name, current_user.email, session['auth.signup.role'])
-
           redirect to('/signup/success')
         end
       end
