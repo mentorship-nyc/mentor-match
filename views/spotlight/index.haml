@@ -4,10 +4,10 @@
       - @profiles.each do |profile|
         .profile{id: profile.nickname, :'data-availability' => profile.availability, :'data-bio' => profile.bio, :'data-name' => profile.name, :'data-role' => profile.role, :'data-skills' => profile.skills, :'data-toggle' => :popover}
           .img
-            %img{src: profile.user.image}
+            %img{src: profile.image}
 
           .name
-            = profile.user.name
+            = profile.name
 
           %p.location
-            = profile.user.location
+            = profile.location
