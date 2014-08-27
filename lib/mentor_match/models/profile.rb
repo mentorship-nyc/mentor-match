@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
 
   after_create do |model|
     MentorMatch::Slack.advertise_profile(model)
-    MentorMatch::UserMailer.signup(model.user.name, model.user.email, model.role)
+    MentorMatch::UserMailer.signup(model.name, model.user.email, model.role)
   end
 
   validates :bio,          length: {maximum: 500}, allow_blank: false
