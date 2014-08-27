@@ -4,17 +4,19 @@
     .row
       .col-xs-12.col-sm-4{style: 'width: 270px;'}
         %p.image
-          %img{alt: "image of #{current_user.name}", src: current_user.image}
+          %img{alt: "image of #{@profile.name}", src: @profile.image}
 
-        %h2.name
-          = current_user.name
+        - if @profile.name
+          %h2.name
+            = @profile.name
 
         .divider
           %hr
 
-        .note-with-icon.location
-          %span.fa.fa-map-marker
-          = current_user.location
+        - if @profile.location
+          .note-with-icon.location
+            %span.fa.fa-map-marker
+            = @profile.location
 
         -#.note-with-icon.github
           %span.fa.fa-github
@@ -32,6 +34,28 @@
               Profile
 
           .panel-body
+            - if @profile.name.empty?
+              .row
+                .col-xs-12
+                  .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:name].present?)}
+                    %label.control-label{for: :name}<
+                      Name
+                    %input.form-control#name{type: :text, name: :'user[name]', value: @profile.name, placeholder: 'Full Name'}
+
+                    - if @profile.errors.messages[:name].present?
+                      %span.glyphicon.form-control-feedback.glyphicon-remove
+
+            - if @profile.location.empty?
+              .row
+                .col-xs-12
+                  .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
+                    %label.control-label{for: :location}<
+                      Location
+                    %input.form-control#location{type: :text, name: :'user[location]', value: @profile.location, placeholder: 'Location'}
+
+                    - if @profile.errors.messages[:location].present?
+                      %span.glyphicon.form-control-feedback.glyphicon-remove
+
             .row
               .col-xs-12
                 .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:bio].present?)}

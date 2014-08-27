@@ -2,9 +2,7 @@ class Identity < ActiveRecord::Base
 
   GITHUB = 'github'
   DECORATIONS = {
-    github: {
-      name: :full_name, email: :email, image: :image, location: :location
-    }
+    github: {email: :email}
   }
 
   validates :user_id,                  numericality: true, allow_nil: true

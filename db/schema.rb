@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820034716) do
+ActiveRecord::Schema.define(version: 20140826222816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,20 @@ ActiveRecord::Schema.define(version: 20140820034716) do
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "profiles", force: true do |t|
-    t.integer "user_id",                  null: false
-    t.string  "bio",          limit: 500, null: false
-    t.string  "availability", limit: 25,  null: false
-    t.string  "skills",                   null: false
-    t.string  "role",         limit: 25,  null: false
+    t.integer "user_id",                                 null: false
+    t.string  "bio",          limit: 500,                null: false
+    t.string  "availability", limit: 25,                 null: false
+    t.string  "skills",                                  null: false
+    t.string  "role",         limit: 25,                 null: false
+    t.string  "name",         limit: 100,                null: false
+    t.string  "image",                                   null: false
+    t.string  "location",     limit: 100,                null: false
+    t.string  "country",      limit: 50
+    t.string  "timezone",     limit: 50
+    t.boolean "active",                   default: true
   end
 
+  add_index "profiles", ["availability", "skills", "role"], name: "index_profiles_on_availability_and_skills_and_role", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
