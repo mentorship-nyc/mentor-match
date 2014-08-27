@@ -18,13 +18,12 @@ module MentorMatch
       end
 
       base.get '/signup/complete-profile' do
-        @profile = current_user.profile || current_user.build_profile
-
+        @profile = current_user.profile || current_user.profile_from_identity
         show :'signup/complete_profile'
       end
 
       base.post '/signup/complete-profile' do
-        @profile = current_user.profile || current_user.build_profile
+        @profile = current_user.profile || current_user.profile_from_identity
         @profile.attributes = update_params.merge(role: session['auth.signup.role'])
         @profile.save
 
@@ -68,13 +67,13 @@ module MentorMatch
         end
       end
 
-#      base.get '/profile' do
-#        show :'signup/complete_profile'
-#      end
-
       def update_params
         (params.select {|k, v| k == 'user'}['user'] || {}).select do |k,v|
-          k == 'bio' || k == 'availability' || k == 'skills'
+          k == 'bio' ||
+            k == 'availability' ||
+            k == 'skills' ||
+            k == 'name' ||
+            k == 'location'
         end
       end
     end
