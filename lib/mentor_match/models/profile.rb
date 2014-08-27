@@ -40,10 +40,6 @@ class Profile < ActiveRecord::Base
       limit(20)
   end
 
-  def name
-    user.name
-  end
-
   def nickname
     user.github.nickname
   end
