@@ -45,16 +45,15 @@
                     - if @profile.errors.messages[:name].present?
                       %span.glyphicon.form-control-feedback.glyphicon-remove
 
-            - if @profile.location.empty?
-              .row
-                .col-xs-12
-                  .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
-                    %label.control-label{for: :location}<
-                      Location
-                    %input.form-control#location{type: :text, name: :'user[location]', value: @profile.location, placeholder: 'Location'}
+            .row
+              .col-xs-12
+                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
+                  %label.control-label{for: :location}<
+                    Location
+                  %input.form-control#location{type: :text, name: :'user[location]', value: @profile.location, placeholder: 'Location'}
 
-                    - if @profile.errors.messages[:location].present?
-                      %span.glyphicon.form-control-feedback.glyphicon-remove
+                  - if @profile.errors.messages[:location].present?
+                    %span.glyphicon.form-control-feedback.glyphicon-remove
 
             .row
               .col-xs-12

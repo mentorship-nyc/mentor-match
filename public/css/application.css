@@ -417,15 +417,23 @@ h2 p.detail {
 
 .spotlight .profile img {
   -webkit-clip-path: circle(100px at 100px 100px);
+  border-radius: 8px;
+  cursor: pointer;
   height: 200px;
   width: 200px;
 }
 
 .spotlight .profile .name {
+  color: #428bca;
+  cursor: pointer;
   font-size: 24px;
   font-weight: 400;
   line-height: 1;
   margin-bottom: 3px;
+}
+
+.spotlight .profile .name:hover {
+  color: #357ebd;
 }
 
 .spotlight .profile .location {
@@ -437,9 +445,8 @@ h2 p.detail {
   background-color: #fff;
   font-family: 'Montserrat';
   margin-bottom: 20px;
-  margin-left: -50px;
   max-width: 350px;
-  width: 350px;
+  width: 300px;
 }
 
 .popover-content {
@@ -459,6 +466,10 @@ h2 p.detail {
 
 .popover-content p.github {
   text-transform: lowercase;
+}
+
+.popover-content p.bio {
+  text-transform: none;
 }
 
 .popover-content .list:after {

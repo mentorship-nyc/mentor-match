@@ -2,16 +2,16 @@
   .row
     %h2
       .col-xs-2
-        %img{alt: 'profile image', src: current_user.image}
+        %img{alt: 'profile image', src: current_user.profile.image}
 
       .col-xs-10
         - if current_user.github.nickname
           %h3
             = current_user.github.nickname
 
-        - if current_user.name
+        - if current_user.profile.name
           %h3
-            = current_user.name
+            = current_user.profile.name
 
   .row
     .col-xs-12

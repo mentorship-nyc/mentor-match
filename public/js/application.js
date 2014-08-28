@@ -5,7 +5,7 @@ function githubLink(username) {
 function profileTitle($element) {
   var segments = [];
 
-  segments.push('<div class="btn-group"><button type="button" class="btn btn-default">Contact</button></div>');
+  segments.push('<div class="btn-group"><button type="button" class="btn btn-primary">Contact</button></div>');
   segments.push($element.data('name'));
   segments.push('<p>' + $element.data('role') + '</p>');
 
@@ -48,14 +48,15 @@ $('.spotlight .profile .img').each(function(index, element) {
     container: '#' + $profile.attr('id'),
     content: profileContent($profile),
     html: true,
-    placement: 'auto right',
+    placement: 'auto',
     title: profileTitle($profile),
-    trigger: 'hover'
+    trigger: 'click'
   });
 
   $profile.on('shown.bs.popover', function() {
-    var left = $profile.find('.popover').css('left').slice(0, -2);
-    $profile.find('.popover').css('left', (left - 10) + 'px');
+    $this_profile = $(this);
+    var top = +$this_profile.find('.popover').css('top').slice(0, -2);
+    $this_profile.find('.popover').css('top', (top - 79) + 'px');
   });
 });
 

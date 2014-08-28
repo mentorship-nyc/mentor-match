@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
 
   after_create do |model|
     MentorMatch::Slack.advertise_profile(model)
-    MentorMatch::UserMailer.signup(model.user.name, model.user.email, model.role)
+    MentorMatch::UserMailer.signup(model.name, model.user.email, model.role)
   end
 
   validates :bio,          length: {maximum: 500}, allow_blank: false
@@ -22,19 +22,29 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  def availability_matches
+    if availability == 'open'
+      AVAILABILITIES
+    elsif AVAILABILITIES[0..2].include? availability
+      AVAILABILITIES[0..2] << 'open'
+    elsif availability == 'weekends'
+      AVAILABILITIES.slice(3..3) << 'open'
+    end
+  end
+
   def matches
     Profile.includes(:user).
-      where(availability: availability).
-      where(availability: 'open').
+      where(availability: availability_matches).
+      where(role: opposite_role).
       where.not(id: id).
       limit(20)
   end
 
-  def name
-    user.name
-  end
-
   def nickname
     user.github.nickname
+  end
+
+  def opposite_role
+    role == 'student' ? 'mentor' : 'student'
   end
 end
