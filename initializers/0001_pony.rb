@@ -13,8 +13,8 @@ if ENV['RACK_ENV'] == 'production'
   options[:via_options] = {
     address: 'smtp.mandrillapp.com',
     port: '587',
-    user_name: 'app28354064@heroku.com',
-    password: 'vn0CxMD-lGCL35Fd1mKwGg',
+    user_name: ENV['MANDRILL_USERNAME'],
+    password: ENV['MANDRILL_APIKEY'],
     authentication: :plain,
     domain: 'mentoring-nyc.com'
   }
