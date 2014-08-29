@@ -1,23 +1,15 @@
-require 'pony'
-
 options = {
   from: 'The Mentoring NYC Team <team@mentoring-nyc.com>',
   via: :smtp,
   via_options: {
-    address: 'localhost', port: 1025,
-    authentication: :plain, domain: 'localhost.localdomain'
+    address: ENV['SMTP_ADDRESS'],
+    port: ENV['SMTP_PORT'],
+    authentication: ENV['SMTP_AUTHENTICATION'] || :plain,
+    domain: ENV['SMTP_DOMAIN']
   }
 }
 
-if ENV['RACK_ENV'] == 'production'
-  options[:via_options] = {
-    address: 'smtp.mandrillapp.com',
-    port: '587',
-    user_name: ENV['MANDRILL_USERNAME'],
-    password: ENV['MANDRILL_APIKEY'],
-    authentication: :plain,
-    domain: 'mentoring-nyc.com'
-  }
-end
+options[:via_options][:user_name] = ENV['MANDRILL_USERNAME'] if ENV['MANDRILL_USERNAME']
+options[:via_options][:password] = ENV['MANDRILL_APIKEY']    if ENV['MANDRILL_USERNAME']
 
 Pony.options = options

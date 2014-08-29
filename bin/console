@@ -2,12 +2,6 @@
 
 require 'irb'
 
-$:.unshift "#{File.dirname(__FILE__)}/../lib"
-
-require 'initializers/0000_dotenv'
-require 'file_loader'
-require 'active_record'
-require 'sinatra/activerecord'
-require 'mentor_match'
+require './config/boot'
 
 IRB.start
