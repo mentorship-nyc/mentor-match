@@ -61,8 +61,7 @@
                   %label.control-label{for: :bio}
                     Bio
 
-                  %textarea.form-control{rows: 6, name: :'user[bio]', placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}<
-                    = @profile.bio
+                  %textarea.form-control{rows: 6, name: :'user[bio]', placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}= @profile.bio
 
                   - if current_user.errors.messages[:bio].present?
                     %span.textarea.glyphicon.form-control-feedback.glyphicon-remove
