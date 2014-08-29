@@ -1,17 +1,9 @@
-require 'haml'
-require 'rdiscount'
-require 'sinatra'
-require 'sinatra/activerecord'
-require 'sinatra/flash'
-require 'mentor_match/user_mailer'
-require 'mentor_match/concerns'
-
 module MentorMatch
   class Application < Sinatra::Base
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
 
-    set :root,  "#{File.dirname(__FILE__)}/../../"
+    set :root,  CoreLoader::BASE_PATH
     set :views, Proc.new { File.join(root, 'views') }
 
     include ControllerToolkit

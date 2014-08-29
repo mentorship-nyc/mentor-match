@@ -1,17 +1,4 @@
-$:.unshift './lib'
-
-require 'rack'
-require 'rack/health'
-require 'rack/request_inspector'
-require 'rack/protection'
-require 'rack/session/redis'
-require 'redis-store'
-require 'rack-timeout'
-
-require 'file_loader'
-require 'mentor_match'
-require 'mentor_match/application'
-require 'initializers'
+require './boot'
 
 # Browser -> Puma -> Health -> Static -> RequestInspector -> Redis -> Protection -> Timeout -> Sinatra
 # Browser <- Puma <- Health <- Static <- RequestInspector <- Redis <- Protection <- Timeout <- Sinatra
