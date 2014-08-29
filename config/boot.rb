@@ -16,6 +16,9 @@ module CoreLoader
 end
 
 CoreLoader.path('lib/*.rb')
-CoreLoader.path('app/*/*.rb')
+CoreLoader.path('app/mailers/*.rb')
+CoreLoader.path('app/models/*.rb')
+CoreLoader.path('app/routes/*.rb')
 CoreLoader.path('initializers/*.rb')
 CoreLoader.path('lib/mentor_match/application.rb')
+CoreLoader.path('app/helpers/*.rb')

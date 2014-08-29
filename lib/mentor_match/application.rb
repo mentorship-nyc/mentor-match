@@ -16,20 +16,6 @@ module MentorMatch
     include Challenges
     include Spotlight
 
-    helpers do
-      def authenticated?
-        !!session['auth.entity_id']
-      end
-
-      def current_user
-        @current_user ||= User.where(id: session['auth.entity_id']).first
-      end
-
-      def has_value(user, attribute, value)
-        user.send(attribute) == value
-      end
-    end
-
     configure do
       set :haml, format: :html5
       enable :sessions
