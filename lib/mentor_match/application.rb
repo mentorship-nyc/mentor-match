@@ -1,9 +1,11 @@
 module MentorMatch
+  DEFAULT_LAYOUT = :'layouts/application'
+
   class Application < Sinatra::Base
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
 
-    set :root,  "#{File.dirname(__FILE__)}/../../"
+    set :root,  "#{File.expand_path(File.dirname(__FILE__))}/../../"
     set :views, Proc.new { File.join(root, 'views') }
 
     include ControllerToolkit

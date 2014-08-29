@@ -1,4 +1,4 @@
-require './boot'
+require './config/boot'
 
 # Browser -> Puma -> Health -> Static -> RequestInspector -> Redis -> Protection -> Timeout -> Sinatra
 # Browser <- Puma <- Health <- Static <- RequestInspector <- Redis <- Protection <- Timeout <- Sinatra
