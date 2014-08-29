@@ -3,7 +3,7 @@ module MentorMatch
     register Sinatra::ActiveRecordExtension
     register Sinatra::Flash
 
-    set :root,  CoreLoader::BASE_PATH
+    set :root,  "#{File.dirname(__FILE__)}/../../"
     set :views, Proc.new { File.join(root, 'views') }
 
     include ControllerToolkit
