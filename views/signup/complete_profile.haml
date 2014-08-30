@@ -1,3 +1,5 @@
+.test
+  =haml :'partials/text_field', :locals => {name: @profile.name}
 .container-fluid.profile
   %form{action: '/signup/complete-profile', method: :post}
     %input{type: :hidden, name: :authenticity_token, value: @csrf}
@@ -40,7 +42,8 @@
                   .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:name].present?)}
                     %label.control-label{for: :name}<
                       Name
-                    %input.form-control#name{type: :text, name: :'user[name]', value: @profile.name, placeholder: 'Full Name'}
+                    %input.form-control#name
+                      =haml :'partials/text_field', :locals => {name: @profile.name, placeholder: 'Full Name'}
 
                     - if @profile.errors.messages[:name].present?
                       %span.glyphicon.form-control-feedback.glyphicon-remove
