@@ -1,1 +1,1 @@
-%input{type: :text, name: :'user[name', value: locals[:name], placeholder: locals[:placeholder]}
+%input.form-control{:id => "#{locals[:id]}", :name => "#{locals[:name]}", type: :text, value: locals[:value], placeholder: locals[:placeholder]}
