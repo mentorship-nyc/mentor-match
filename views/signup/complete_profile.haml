@@ -79,8 +79,6 @@
                         .col-xs-6
                           .radio
                             %label
-                              / %input{type: :radio, name: :'user[availability]', checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
-                              / = availability.capitalize
                               =haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, iterator: availability}
 
 
