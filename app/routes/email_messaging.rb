@@ -9,6 +9,7 @@ module MentorMatch
         event = events[0]
 
         if event && event['event'] == 'inbound'
+          puts event
           message = event['msg']
 
           Pony.mail({
@@ -25,6 +26,7 @@ module MentorMatch
         event = events[0]
 
         if event && event['event'] == 'inbound'
+          puts event
           message = event['msg']
 
           text = <<-TEXT
