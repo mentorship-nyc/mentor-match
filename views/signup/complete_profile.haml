@@ -1,5 +1,3 @@
-.test
-  =haml :'partials/text_field', :locals => {name: @profile.name}
 .container-fluid.profile
   %form{action: '/signup/complete-profile', method: :post}
     %input{type: :hidden, name: :authenticity_token, value: @csrf}
@@ -53,7 +51,7 @@
                 .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
                   %label.control-label{for: :location}<
                     Location
-                  %input.form-control#location{type: :text, name: :'user[location]', value: @profile.location, placeholder: 'Location'}
+                  =haml :'partials/text_field', :locals => {value: 'Location', placeholder: @profile.location, id: 'location', name: 'user[location]'}
 
                   - if @profile.errors.messages[:location].present?
                     %span.glyphicon.form-control-feedback.glyphicon-remove
@@ -64,7 +62,7 @@
                   %label.control-label{for: :bio}
                     Bio
 
-                  %textarea.form-control{rows: 6, name: :'user[bio]', placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}= @profile.bio
+                  =haml :'/partials/text_area', :locals => {placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}
 
                   - if current_user.errors.messages[:bio].present?
                     %span.textarea.glyphicon.form-control-feedback.glyphicon-remove
@@ -81,8 +79,10 @@
                         .col-xs-6
                           .radio
                             %label
-                              %input{type: :radio, name: :'user[availability]', checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
-                              = availability.capitalize
+                              / %input{type: :radio, name: :'user[availability]', checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
+                              / = availability.capitalize
+                              =haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, iterator: availability}
+
 
             .row
               .col-xs-12
