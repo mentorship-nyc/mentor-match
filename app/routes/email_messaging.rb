@@ -8,8 +8,9 @@ module MentorMatch
         events = JSON.parse(params['mandrill_events'])
         event = events[0]
 
+        $stdout.puts event
+
         if event && event['event'] == 'inbound'
-          puts event
           message = event['msg']
 
           Pony.mail({
@@ -25,8 +26,9 @@ module MentorMatch
         events = JSON.parse(params['mandrill_events'])
         event = events[0]
 
+        $stdout.puts event
+
         if event && event['event'] == 'inbound'
-          puts event
           message = event['msg']
 
           text = <<-TEXT
