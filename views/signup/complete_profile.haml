@@ -51,7 +51,7 @@
                 .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
                   %label.control-label{for: :location}<
                     Location
-                  =haml :'partials/text_field', :locals => {value: 'Location', placeholder: @profile.location, id: 'location', name: 'user[location]'}
+                  =haml :'partials/text_field', :locals => {value: @profile.location, placeholder: 'Location', id: 'location', name: 'user[location]'}
 
                   - if @profile.errors.messages[:location].present?
                     %span.glyphicon.form-control-feedback.glyphicon-remove
@@ -87,8 +87,8 @@
                 .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:skills].present?)}
                   %label.control-label{for: :skills}<
                     Current Skills
-                  %input.form-control#skill{type: :text, name: :'user[skills]', value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS'}
-
+                  / %input.form-control#skill{type: :text, name: :'user[skills]', value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS'}
+                  =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]'}
                   - if current_user.errors.messages[:skills].present?
                     %span.glyphicon.form-control-feedback.glyphicon-remove
 
