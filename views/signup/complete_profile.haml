@@ -40,8 +40,7 @@
                   .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:name].present?)}
                     %label.control-label{for: :name}<
                       Name
-                    %input.form-control#name
-                      = haml :'partials/text_field', :locals => {name: @profile.name, placeholder: 'Full Name'}
+                      = haml :'partials/text_field', :locals => {id: 'name', name: @profile.name, placeholder: 'Full Name'}
 
                     - if @profile.errors.messages[:name].present?
                       %span.glyphicon.form-control-feedback.glyphicon-remove
@@ -62,7 +61,7 @@
                   %label.control-label{for: :bio}
                     Bio
 
-                  = haml :'/partials/text_area', :locals => {placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}
+                  = haml :'/partials/text_area', :locals => {bio: @profile.bio, placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}
 
                   - if current_user.errors.messages[:bio].present?
                     %span.textarea.glyphicon.form-control-feedback.glyphicon-remove
