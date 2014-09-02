@@ -1,4 +1,4 @@
-- @profile = locals[:profile] 
+- profile = locals[:profile] 
 - availability = locals[:iterator]
-%input{type: :radio, name: locals[:name], checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
+%input{type: :radio, name: locals[:name], checked: ('checked' if has_value(profile, :availability, availability)), value: availability}
 	= availability
