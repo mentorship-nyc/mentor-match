@@ -1,2 +1,13 @@
--locals[:bio] = bio
-%textarea.form-control{rows: 6, name: :'user[bio]', placeholder: locals[:placeholder], value: locals[:value]}= bio
+- bio = locals[:bio]
+- profile = locals[:profile]
+.row
+	.col-xs-12
+		.form-group{class: ('has-error has-feedback' if profile.errors.messages[:bio].present?)}
+			
+			%label.control-label{for: locals[:control_label]}<
+				#{locals[:control_label_text]}
+			
+			%textarea.form-control{rows: 6, name: :'user[bio]', placeholder: locals[:placeholder], value: locals[:value]}= bio
+
+			- if profile.errors.messages[:bio].present?
+				%span.textarea.glyphicon.form-control-feedback.glyphicon-remove
