@@ -82,14 +82,8 @@
                               =haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, iterator: availability}
 
 
-            / .row
-            /   .col-xs-12
-            /     .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:skills].present?)}
-            /       %label.control-label{for: :skills}<
-            /         Current Skills
-            /       =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]'}
-            /       - if current_user.errors.messages[:skills].present?
-            /         %span.glyphicon.form-control-feedback.glyphicon-remove
+            =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile}
+          
 
             .actions.text-right
               %button.btn.btn-primary{type: :submit} Submit Profile
