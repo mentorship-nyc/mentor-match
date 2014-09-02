@@ -43,7 +43,7 @@
 
             = haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, control_label: :availability, control_label_text: 'Availability'}
 
-            =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile, control_label: :availability, control_label_text: 'Availability'}
+            = haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile, control_label: :availability, control_label_text: 'Availability'}
           
 
             .actions.text-right
