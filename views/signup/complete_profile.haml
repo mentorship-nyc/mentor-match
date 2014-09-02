@@ -44,22 +44,22 @@
 
                  
 
-            .row
-              .col-xs-12
-                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:availability].present?)}
-                  %label.control-label{for: :availability}<
-                    Availability
+            / .row
+            /   .col-xs-12
+            /     .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:availability].present?)}
+            /       %label.control-label{for: :availability}<
+            /         Availability
 
-                  .row
-                    - Profile::AVAILABILITIES.each_slice(3).each do |array|
-                      - array.each do |availability|
-                        .col-xs-6
-                          .radio
-                            %label
-                              =haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, iterator: availability}
+            /       .row
+            /         - Profile::AVAILABILITIES.each_slice(3).each do |array|
+            /           - array.each do |availability|
+            /             .col-xs-6
+            /               .radio
+            /                 %label
+            = haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, control_label: :availability, control_label_text: 'Availability'}
 
 
-            =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile}
+            =haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile, control_label: :availability, control_label_text: 'Availability'}
           
 
             .actions.text-right
