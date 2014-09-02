@@ -35,61 +35,16 @@
 
           .panel-body
             - if @profile.name.empty?
-              .row
-                .col-xs-12
-                  .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:name].present?)}
-                    %label.control-label{for: :name}<
-                      Name
-                    %input.form-control#name{type: :text, name: :'user[name]', value: @profile.name, placeholder: 'Full Name'}
+              = haml :'partials/text_field', :locals => {value: @profile.name, placeholder: 'Location', id: 'location', name: 'user[location]', profile: @profile, control_label: :name, control_label_text: 'Name'}
 
-                    - if @profile.errors.messages[:name].present?
-                      %span.glyphicon.form-control-feedback.glyphicon-remove
+            = haml :'partials/text_field', :locals => {value: @profile.location, placeholder: 'Location', id: 'location', name: 'user[location]', profile: @profile, control_label: :location, control_label_text: 'Location'}
 
-            .row
-              .col-xs-12
-                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:location].present?)}
-                  %label.control-label{for: :location}<
-                    Location
-                  %input.form-control#location{type: :text, name: :'user[location]', value: @profile.location, placeholder: 'Location'}
+            = haml :'/partials/text_area', :locals => {bio: @profile.bio, placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.', control_label: :bio, control_label_text: 'Bio', profile: @profile}
 
-                  - if @profile.errors.messages[:location].present?
-                    %span.glyphicon.form-control-feedback.glyphicon-remove
+            = haml :'/partials/radio', :locals => {name: 'user[availability]', profile: @profile, control_label: :availability, control_label_text: 'Availability'}
 
-            .row
-              .col-xs-12
-                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:bio].present?)}
-                  %label.control-label{for: :bio}
-                    Bio
-
-                  %textarea.form-control{rows: 6, name: :'user[bio]', placeholder: 'Tell us about yourself, why you joined, and your goals.  This is an important part of being matched.  It will help us identify people who are a good fit.'}= @profile.bio
-
-                  - if current_user.errors.messages[:bio].present?
-                    %span.textarea.glyphicon.form-control-feedback.glyphicon-remove
-
-            .row
-              .col-xs-12
-                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:availability].present?)}
-                  %label.control-label{for: :availability}<
-                    Availability
-
-                  .row
-                    - Profile::AVAILABILITIES.each_slice(3).each do |array|
-                      - array.each do |availability|
-                        .col-xs-6
-                          .radio
-                            %label
-                              %input{type: :radio, name: :'user[availability]', checked: ('checked' if has_value(@profile, :availability, availability)), value: availability}
-                              = availability.capitalize
-
-            .row
-              .col-xs-12
-                .form-group{class: ('has-error has-feedback' if @profile.errors.messages[:skills].present?)}
-                  %label.control-label{for: :skills}<
-                    Current Skills
-                  %input.form-control#skill{type: :text, name: :'user[skills]', value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS'}
-
-                  - if current_user.errors.messages[:skills].present?
-                    %span.glyphicon.form-control-feedback.glyphicon-remove
+            = haml :'partials/text_field', :locals => {value: @profile.skills, placeholder: 'Example: Ruby, Ruby, JavaScript, Angular, CSS', id: 'skill', name: :'user[skills]', control_label_text: 'Current Skills', control_label: :skills, profile: @profile, control_label: :availability, control_label_text: 'Availability'}
+          
 
             .actions.text-right
               %button.btn.btn-primary{type: :submit} Submit Profile

@@ -1,0 +1,11 @@
+- profile = locals[:profile]
+.row
+	.col-xs-12
+		.form-group{class: ('has-error has-feedback' if profile.errors.messages[:name].present?)}
+			%label.control-label{for: locals[:control_label]}< 
+				#{locals[:control_label_text]}
+				
+			%input.form-control{:id => "#{locals[:id]}", :name => "#{locals[:name]}", type: :text, value: locals[:value], placeholder: locals[:placeholder]}
+
+			-if profile.errors.messages[:location].present?
+				%span.glyphicon.form-control-feedback.glyphicon-remove

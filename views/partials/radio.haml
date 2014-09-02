@@ -1,0 +1,14 @@
+- profile = locals[:profile] 
+.row
+	.col-xs-12
+		.form-group{class: ('has-error has-feedback' if profile.errors.messages[:availability].present?)}
+			%label.control-label{for: locals[:control_label]}<
+				#{locals[:control_label_text]}
+
+			.row
+				- Profile::AVAILABILITIES.each_slice(3).each do |array|
+					- array.each do |availability|
+						.col-xs-6
+							.radio
+								%label
+									%input{type: :radio, name: locals[:name], checked: ('checked' if has_value(profile, :availability, availability)), value: availability}= availability
